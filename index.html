@@ -1,466 +1,325 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>La Voglia – Pub Birreria | Vercelli dal 1989</title>
-  <meta name="description" content="La Voglia, pub birreria storico di Vercelli dal 1989. 100 panini, 8 birre alla spina, selezione gin tonic. Atmosfera jazz e funky nel cuore di Vercelli." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <meta name="description" content="La Voglia, pub birreria storico di Vercelli dal 1989. 100 panini numerati, birre alla spina selezionate, gin tonic. Via Lagrange 28, Vercelli. Eccellente su TripAdvisor."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet"/>
   <style>
-    :root {
-      --green:  #1c3d28;
-      --green2: #254d34;
-      --gold:   #c8a951;
-      --gold2:  #e6c97a;
-      --cream:  #f5ede0;
-      --dark:   #111111;
-      --text:   #d4c9b8;
+    :root{
+      --gd:#152218;--gm:#253426;--gl:#324634;
+      --go:#fced9e;--gg:#dcb356;--gk:#8c6023;
+      --tm:#eceae1;--ts:#b5b1a3;
+      --gb:rgba(37,52,38,.55);--gbr:rgba(220,179,86,.25);--gbx:16px;
+      --ta:#34e0a1;--tad:rgba(52,224,161,.1);
+      --fd:'Playfair Display',serif;--fb:'Lato',sans-serif;
     }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;font-size:16px}
+    body{background:var(--gd);color:var(--tm);font-family:var(--fb);line-height:1.7;overflow-x:hidden}
+    body::before{content:'';position:fixed;top:0;left:0;width:100vw;height:100vh;background:radial-gradient(circle at 15% 50%,rgba(211,168,75,.05),transparent 40%),radial-gradient(circle at 85% 10%,rgba(44,74,52,.4),transparent 50%);z-index:-2;pointer-events:none}
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(18,31,21,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--gbr);display:flex;justify-content:space-between;align-items:center;padding:0 4rem;height:72px;transition:height .3s,background .3s;box-shadow:0 4px 30px rgba(0,0,0,.3)}
+    .nav-logo img{height:45px;width:auto;filter:drop-shadow(0 2px 10px rgba(220,179,86,.4));transition:transform .3s}
+    .nav-logo:hover img{transform:scale(1.05)}
+    .nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+    .nav-links a{color:var(--tm);text-decoration:none;font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;font-weight:700;position:relative;padding:.5rem 0;transition:color .3s}
+    .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--gg),var(--go));transition:width .3s}
+    .nav-links a:hover{color:var(--go)}.nav-links a:hover::after{width:100%}
+    .nav-ta{display:inline-flex!important;align-items:center;gap:.4rem;background:var(--tad);border:1px solid rgba(52,224,161,.3);color:var(--ta)!important;padding:.4rem .9rem;border-radius:20px;font-size:.75rem!important;transition:background .3s,border-color .3s!important}
+    .nav-ta:hover{background:rgba(52,224,161,.18)!important;border-color:var(--ta)!important}
+    .nav-ta::after{display:none!important}
 
-    html { scroll-behavior: smooth; }
+    /* HERO */
+    .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:8rem 2rem 5rem;overflow:hidden;border-bottom:2px solid var(--gbr)}
+    .hero::after{content:'';position:absolute;top:2rem;bottom:2rem;left:2rem;right:2rem;border:1px solid var(--gk);border-radius:12px;pointer-events:none;opacity:.4}
+    .hero-bg-img{position:absolute;inset:0;z-index:-1;overflow:hidden}
+    .hero-bg-img img{width:100%;height:100%;object-fit:cover;opacity:.22;mix-blend-mode:luminosity;filter:contrast(120%) brightness(70%);transform:scale(1.05);animation:slowZoom 25s infinite alternate ease-in-out}
+    @keyframes slowZoom{0%{transform:scale(1.05)}100%{transform:scale(1.15)}}
+    .hero-badge{display:inline-block;background:rgba(220,179,86,.1);border:1px solid var(--gg);border-radius:30px;padding:.4rem 1.5rem;font-size:.75rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--go);margin-bottom:2rem}
+    .hero-logo-wrap{width:100%;max-width:560px;margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;position:relative;z-index:2}
+    .hero-logo-wrap img{width:100%;height:auto;filter:drop-shadow(0 20px 40px rgba(0,0,0,.85));transition:transform .5s cubic-bezier(.175,.885,.32,1.275)}
+    .hero-logo-wrap:hover img{transform:scale(1.03) translateY(-5px)}
+    .hero-sub{font-size:1.1rem;color:var(--go);margin-bottom:1.5rem;font-weight:400;letter-spacing:.15em;text-transform:uppercase}
+    .hero-divider{width:120px;height:2px;background:linear-gradient(90deg,transparent,var(--gg),transparent);margin:2rem auto}
+    .hero-tagline{font-family:var(--fd);font-style:italic;font-size:1.35rem;color:var(--tm);max-width:580px;line-height:1.6}
+    .hero-cta{margin-top:3.5rem;display:flex;gap:1.2rem;flex-wrap:wrap;justify-content:center;position:relative;z-index:2}
+    .btn-primary{background:linear-gradient(135deg,var(--go),var(--gg));color:var(--gd);padding:1rem 2.4rem;border-radius:4px;text-decoration:none;font-weight:900;font-size:.85rem;letter-spacing:.15em;text-transform:uppercase;transition:all .3s;box-shadow:0 4px 15px rgba(211,168,75,.3)}
+    .btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(211,168,75,.4)}
+    .btn-outline{background:var(--gb);backdrop-filter:blur(10px);border:1px solid var(--gg);color:var(--go);padding:1rem 2.4rem;border-radius:4px;text-decoration:none;font-size:.85rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;transition:all .3s}
+    .btn-outline:hover{background:var(--gg);color:var(--gd);transform:translateY(-3px)}
+    .btn-ta{display:inline-flex;align-items:center;gap:.6rem;background:rgba(52,224,161,.08);border:1px solid rgba(52,224,161,.4);color:var(--ta);padding:1rem 2.4rem;border-radius:4px;text-decoration:none;font-size:.85rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;transition:all .3s}
+    .btn-ta:hover{background:var(--ta);color:#000;transform:translateY(-3px);box-shadow:0 8px 25px rgba(52,224,161,.25)}
 
-    body {
-      background: var(--dark);
-      color: var(--text);
-      font-family: 'Lato', sans-serif;
-      line-height: 1.7;
-    }
+    /* SECTIONS */
+    section{padding:8rem 2rem;position:relative}
+    .container{max-width:1200px;margin:0 auto;position:relative;z-index:2}
+    .section-label{font-size:.8rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gg);margin-bottom:1rem;display:inline-block}
+    .section-title{font-family:var(--fd);font-size:clamp(2.5rem,5vw,4rem);font-weight:900;color:#fff;margin-bottom:1rem;line-height:1.1}
+    .section-title span{background:linear-gradient(90deg,var(--go),var(--gk));background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .section-line{width:80px;height:3px;background:linear-gradient(90deg,var(--gg),transparent);margin-bottom:4rem}
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(17,17,17,0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(200,169,81,0.25);
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 0 2rem; height: 64px;
-    }
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem; color: var(--gold);
-      letter-spacing: 0.04em;
-    }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      color: var(--text); text-decoration: none;
-      font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--gold); }
+    /* STORIA */
+    #storia{background:linear-gradient(to bottom,#0f1812,var(--gm))}
+    .storia-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+    .storia-text p{color:var(--ts);margin-bottom:1.5rem;font-size:1.05rem;line-height:1.8}
+    .storia-text p strong{color:var(--go);font-weight:700}
+    .storia-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+    .stat-card{background:var(--gb);backdrop-filter:blur(var(--gbx));border:1px solid var(--gbr);border-radius:8px;padding:2.5rem 1.5rem;text-align:center;transition:transform .3s,border-color .3s;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+    .stat-card:hover{transform:translateY(-8px);border-color:var(--gg)}
+    .stat-number{font-family:var(--fd);font-size:4rem;font-weight:900;color:var(--go);line-height:1;margin-bottom:.5rem}
+    .stat-label{font-size:.8rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--tm)}
 
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column;
-      justify-content: center; align-items: center;
-      text-align: center;
-      padding: 6rem 2rem 4rem;
-      background:
-        radial-gradient(ellipse at 50% 30%, rgba(28,61,40,0.7) 0%, transparent 70%),
-        linear-gradient(180deg, #0d0d0d 0%, #1a2a1e 60%, #0d0d0d 100%);
-      position: relative; overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: repeating-linear-gradient(
-        0deg, transparent, transparent 80px,
-        rgba(200,169,81,0.03) 80px, rgba(200,169,81,0.03) 81px
-      );
-    }
-    .hero-badge {
-      display: inline-block;
-      border: 1px solid var(--gold); border-radius: 2px;
-      padding: 0.3rem 1.2rem;
-      font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 2.5rem;
-    }
+    /* BIRRE ALLA SPINA */
+    #birre{background:url('https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=1600&q=80') center/cover fixed;position:relative}
+    #birre::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,var(--gm) 0%,rgba(26,44,30,.9) 50%,var(--gd) 100%)}
+    .tap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(480px,1fr));gap:2rem}
+    .tap-card{background:var(--gb);backdrop-filter:blur(var(--gbx));border:1px solid var(--gbr);border-radius:12px;padding:1.8rem;display:flex;gap:1.8rem;align-items:center;transition:all .4s cubic-bezier(.175,.885,.32,1.275);position:relative;overflow:hidden}
+    .tap-card:hover{border-color:var(--gg);transform:translateY(-6px);box-shadow:0 20px 45px rgba(0,0,0,.4)}
+    .tap-disc{width:120px;height:120px;border-radius:50%;flex-shrink:0;align-self:center;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;background:var(--disc-bg,linear-gradient(135deg,#555,#333));border:4px solid var(--disc-border,rgba(255,255,255,.3));box-shadow:0 8px 24px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.15)}
+    .tap-disc::before{content:'';position:absolute;inset:7px;border:1.5px solid var(--disc-ring,rgba(255,255,255,.2));border-radius:50%;pointer-events:none}
+    .td-flag{font-size:1.5rem;margin-bottom:3px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.4));line-height:1}
+    .td-name{font-family:var(--fd);font-weight:900;font-size:.72rem;color:var(--disc-text,#fff);text-align:center;line-height:1.2;padding:0 8px;text-shadow:0 1px 4px rgba(0,0,0,.6);letter-spacing:.01em;word-break:break-word}
+    .td-abv{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--disc-sub,rgba(255,255,255,.65));margin-top:4px;font-weight:700;text-align:center;padding:0 4px}
+    .tap-info{flex:1;min-width:0;align-self:center}
+    .tap-name{font-family:var(--fd);font-size:1.15rem;font-weight:900;color:var(--go);margin-bottom:.2rem}
+    .tap-origin{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ts);margin-bottom:.6rem}
+    .tap-desc{font-size:.9rem;color:var(--tm);line-height:1.6;margin-bottom:.9rem}
+    .tap-prices{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}
+    .tap-price-chip{background:rgba(220,179,86,.08);border:1px solid rgba(220,179,86,.2);border-radius:4px;padding:.2rem .6rem;font-size:.75rem;color:var(--ts);display:inline-flex;align-items:center;gap:.25rem;white-space:nowrap}
+    .tap-price-chip strong{color:var(--go);font-family:var(--fd);font-size:.88rem;line-height:1}
 
-    /* LOGO SVG embed */
-    .hero-logo-wrap {
-      width: 260px; height: 260px;
-      margin: 0 auto 2.5rem;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .hero-logo-wrap svg { filter: drop-shadow(0 0 30px rgba(200,169,81,0.4)); }
+    /* promo 4 birre */
+    .birre-promo{margin-top:3rem;background:linear-gradient(135deg,var(--gl),var(--gm));border:1px solid var(--gg);border-radius:10px;padding:2.5rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem;position:relative;z-index:2;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+    .birre-promo-txt h3{font-family:var(--fd);font-size:1.6rem;color:var(--go);margin-bottom:.6rem}
+    .birre-promo-txt p{color:var(--tm);font-size:1rem;line-height:1.6}
+    .promo-pill{background:linear-gradient(135deg,var(--go),var(--gg));color:var(--gd);border-radius:8px;padding:1.5rem 2rem;text-align:center;min-width:150px;box-shadow:0 10px 25px rgba(211,168,75,.3)}
+    .promo-pill .pp-price{font-family:var(--fd);font-size:2.8rem;font-weight:900;line-height:1}
+    .promo-pill .pp-label{font-size:.75rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin-top:.3rem}
 
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.8rem, 6vw, 5rem);
-      font-weight: 900; color: #fff;
-      line-height: 1.05; margin-bottom: 0.5rem;
-      letter-spacing: -0.01em;
-    }
-    .hero h1 span { color: var(--gold); }
-    .hero-sub {
-      font-size: 1.05rem; color: var(--text);
-      margin-bottom: 1rem; font-weight: 300; letter-spacing: 0.08em;
-    }
-    .hero-divider {
-      width: 80px; height: 1px; background: var(--gold);
-      margin: 1.8rem auto;
-    }
-    .hero-tagline {
-      font-family: 'Playfair Display', serif;
-      font-style: italic; font-size: 1.2rem;
-      color: var(--gold2); max-width: 540px;
-    }
-    .hero-cta {
-      margin-top: 3rem; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
-    }
-    .btn-primary {
-      background: var(--gold); color: #111;
-      padding: 0.85rem 2.2rem; border-radius: 2px;
-      text-decoration: none; font-weight: 700;
-      font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase;
-      transition: background 0.2s, transform 0.15s;
-    }
-    .btn-primary:hover { background: var(--gold2); transform: translateY(-2px); }
-    .btn-outline {
-      border: 1px solid var(--gold); color: var(--gold);
-      padding: 0.85rem 2.2rem; border-radius: 2px;
-      text-decoration: none; font-size: 0.85rem;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      transition: all 0.2s;
-    }
-    .btn-outline:hover { background: var(--gold); color: #111; }
+    /* MENU */
+    #menu{background:var(--gd)}
+    .menu-tabs{display:flex;margin-bottom:3rem;background:var(--gb);border:1px solid var(--gbr);border-radius:8px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+    .menu-tab{flex:1;padding:1.1rem .8rem;text-align:center;background:transparent;border:none;border-right:1px solid var(--gbr);color:var(--tm);font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .3s;font-family:var(--fb);display:inline-flex;align-items:center;justify-content:center;gap:.4rem;white-space:nowrap}
+    .menu-tab:last-child{border-right:none}
+    .menu-tab.active{background:linear-gradient(to bottom,rgba(211,168,75,.15),rgba(211,168,75,.05));color:var(--go);box-shadow:inset 0 3px 0 var(--gg)}
+    .menu-tab:hover:not(.active){background:rgba(255,255,255,.05);color:var(--go)}
+    .menu-panel{display:none;animation:fadeIn .4s ease}
+    .menu-panel.active{display:block}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+    .panini-note{background:linear-gradient(90deg,var(--gb),transparent);border-left:4px solid var(--gg);padding:1.4rem 2rem;border-radius:0 8px 8px 0;margin-bottom:2rem;font-size:1rem;color:var(--tm)}
+    .panini-note strong{color:var(--go);font-weight:900}
 
-    /* ── SECTION BASE ── */
-    section { padding: 6rem 2rem; }
-    .container { max-width: 1100px; margin: 0 auto; }
-    .section-label {
-      font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 0.6rem;
-    }
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700; color: #fff; margin-bottom: 1rem;
-    }
-    .section-title span { color: var(--gold); }
-    .section-line {
-      width: 60px; height: 2px; background: var(--gold); margin-bottom: 3rem;
-    }
+    /* search */
+    .panini-search-row{display:flex;align-items:center;gap:1.5rem;margin-bottom:2rem;flex-wrap:wrap}
+    .panini-search{flex:1;min-width:200px;background:var(--gb);border:1px solid var(--gbr);border-radius:8px;padding:.9rem 1.4rem;color:var(--tm);font-family:var(--fb);font-size:1rem;outline:none;transition:border-color .3s}
+    .panini-search::placeholder{color:var(--ts)}
+    .panini-search:focus{border-color:var(--gg)}
+    .panini-counter{font-size:.85rem;color:var(--ts);white-space:nowrap;font-weight:700;letter-spacing:.08em}
+    .panini-counter span{color:var(--go);font-family:var(--fd);font-size:1.1rem}
 
-    /* ── STORIA ── */
-    #storia { background: #141414; }
-    .storia-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
-    }
-    .storia-text p {
-      color: var(--text); margin-bottom: 1.2rem; font-size: 1.05rem;
-    }
-    .storia-text p strong { color: var(--gold2); font-weight: 700; }
-    .storia-stats {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
-    }
-    .stat-card {
-      background: var(--green);
-      border: 1px solid rgba(200,169,81,0.2);
-      border-radius: 4px; padding: 1.8rem 1.5rem; text-align: center;
-    }
-    .stat-number {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem; font-weight: 900; color: var(--gold);
-      line-height: 1;
-    }
-    .stat-label {
-      font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--text); margin-top: 0.5rem;
-    }
+    .items-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem}
+    .item-card{background:var(--gb);border:1px solid rgba(255,255,255,.05);border-radius:8px;padding:1.3rem 1.4rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:all .25s}
+    .item-card:hover{background:rgba(44,74,52,.4);border-color:var(--gbr);transform:translateX(4px)}
+    .item-card.hidden{display:none}
+    .item-info{display:flex;flex-direction:column;justify-content:center;flex:1;min-width:0}
+    .item-num{display:inline-block;background:rgba(211,168,75,.1);color:var(--gg);font-size:.72rem;font-weight:900;letter-spacing:.1em;padding:.18rem .55rem;border-radius:4px;margin-bottom:.4rem;align-self:flex-start}
+    .item-name{color:#fff;font-size:1rem;font-weight:700;line-height:1.4}
+    .item-sub{color:var(--ts);font-size:.78rem;letter-spacing:.08em;margin-top:.3rem;text-transform:uppercase}
+    .item-price{font-family:var(--fd);font-size:1.2rem;color:var(--go);white-space:nowrap;font-weight:900;flex-shrink:0}
 
-    /* ── BIRRE ── */
-    #birre { background: var(--green); }
-    .birre-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.5rem;
-    }
-    .birra-card {
-      background: rgba(0,0,0,0.35);
-      border: 1px solid rgba(200,169,81,0.18);
-      border-radius: 4px; padding: 1.8rem 1.4rem;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .birra-card:hover { border-color: var(--gold); transform: translateY(-4px); }
-    .birra-flag { font-size: 1.8rem; margin-bottom: 0.6rem; }
-    .birra-name {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700; font-size: 1.05rem; color: #fff; margin-bottom: 0.3rem;
-    }
-    .birra-origin {
-      font-size: 0.78rem; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase;
-    }
-    .birra-desc { font-size: 0.88rem; color: var(--text); margin-top: 0.6rem; }
-    .birre-promo {
-      margin-top: 3rem;
-      background: rgba(0,0,0,0.3);
-      border: 1px solid var(--gold);
-      border-radius: 4px; padding: 2rem 2.5rem;
-      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;
-    }
-    .birre-promo-text h3 {
-      font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #fff;
-    }
-    .birre-promo-text p { color: var(--text); font-size: 0.95rem; }
-    .promo-badge {
-      background: var(--gold); color: #111; border-radius: 4px;
-      padding: 1rem 1.8rem; text-align: center;
-    }
-    .promo-badge .price {
-      font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900;
-    }
-    .promo-badge .price-label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    /* bottiglia badge */
+    .bottle-badge{width:48px;height:48px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;align-self:center;font-size:.62rem;font-weight:900;letter-spacing:.05em;text-transform:uppercase;line-height:1.2;text-align:center;border:1px solid rgba(255,255,255,.15)}
 
-    /* ── MENU ── */
-    #menu { background: #141414; }
-    .menu-tabs {
-      display: flex; gap: 0; margin-bottom: 3rem;
-      border: 1px solid rgba(200,169,81,0.25); border-radius: 4px; overflow: hidden;
-    }
-    .menu-tab {
-      flex: 1; padding: 0.9rem 1rem; text-align: center;
-      background: transparent; border: none; color: var(--text);
-      font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase;
-      cursor: pointer; transition: all 0.2s; font-family: 'Lato', sans-serif;
-    }
-    .menu-tab.active { background: var(--gold); color: #111; font-weight: 700; }
-    .menu-tab:hover:not(.active) { background: rgba(200,169,81,0.1); color: var(--gold); }
-    .menu-panel { display: none; }
-    .menu-panel.active { display: block; }
+    /* gin bottiglia item */
+    .gin-bottle-icon{font-size:1.5rem;flex-shrink:0;align-self:center;line-height:1}
 
-    .panini-note {
-      background: rgba(28,61,40,0.4); border-left: 3px solid var(--gold);
-      padding: 1rem 1.5rem; border-radius: 0 4px 4px 0; margin-bottom: 2rem;
-      font-size: 0.9rem; color: var(--text);
-    }
-    .panini-note strong { color: var(--gold2); }
+    /* GALLERY */
+    #gallery{background:linear-gradient(180deg,var(--gd),#000);padding:8rem 2rem}
+    .gallery-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:310px 310px;gap:1.5rem;max-width:1200px;margin:4rem auto 0}
+    .gallery-img{overflow:hidden;border-radius:8px;position:relative;border:1px solid var(--gbr)}
+    .gallery-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.165,.84,.44,1);display:block;filter:saturate(.8) contrast(1.1)}
+    .gallery-img:hover img{transform:scale(1.1);filter:saturate(1.1) contrast(1.1)}
+    .gallery-img.tall{grid-row:span 2}.gallery-img.wide{grid-column:span 2}
+    .gallery-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(18,31,21,.9));pointer-events:none}
 
-    .panini-highlight-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem;
-    }
-    .panino-card {
-      background: var(--green); border: 1px solid rgba(200,169,81,0.15);
-      border-radius: 4px; padding: 1.2rem 1.4rem;
-      display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem;
-    }
-    .panino-num { color: var(--gold); font-size: 0.75rem; font-weight: 700; margin-bottom: 0.2rem; }
-    .panino-name { color: #fff; font-size: 0.95rem; }
-    .panino-price {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem; color: var(--gold2); white-space: nowrap; font-weight: 700;
-    }
+    /* ATMOSFERA */
+    #atmosfera{background:url('https://images.unsplash.com/photo-1544025162-d76694265947?w=1600&q=80') center/cover fixed;position:relative}
+    #atmosfera::before{content:'';position:absolute;inset:0;background:rgba(18,31,21,.88);backdrop-filter:blur(8px)}
+    .atm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;position:relative;z-index:2}
+    .atm-card{background:var(--gb);border:1px solid var(--gbr);border-radius:8px;padding:3rem 2rem;text-align:center;transition:transform .4s;box-shadow:0 15px 35px rgba(0,0,0,.3)}
+    .atm-card:hover{transform:translateY(-10px);background:rgba(211,168,75,.05);border-color:var(--gg)}
+    .atm-icon{font-size:2.8rem;margin-bottom:1.5rem;display:inline-flex;width:76px;height:76px;background:rgba(0,0,0,.3);border-radius:50%;align-items:center;justify-content:center;border:1px solid var(--gk)}
+    .atm-title{font-family:var(--fd);font-size:1.4rem;font-weight:900;color:var(--go);margin-bottom:.8rem}
+    .atm-desc{font-size:.97rem;color:var(--tm);line-height:1.6}
 
-    .toast-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
-    .toast-card {
-      background: var(--green); border: 1px solid rgba(200,169,81,0.15);
-      border-radius: 4px; padding: 1.2rem 1.4rem;
-      display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;
-    }
-    .toast-name { color: #fff; font-size: 0.93rem; }
-    .toast-price { color: var(--gold2); font-family: 'Playfair Display', serif; font-weight: 700; white-space: nowrap; }
+    /* TRIPADVISOR */
+    #tripadvisor{background:linear-gradient(to bottom,#050e07,#0b1a0e,#050e07);position:relative;overflow:hidden}
+    #tripadvisor::before{content:'';position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:1000px;height:1000px;background:radial-gradient(circle,rgba(52,224,161,.07) 0%,transparent 65%);pointer-events:none}
+    .ta-wrap{text-align:center;position:relative;z-index:2}
+    .ta-badge-pill{display:inline-flex;align-items:center;gap:1rem;background:var(--tad);border:1px solid rgba(52,224,161,.22);border-radius:50px;padding:.8rem 1.8rem;margin-bottom:3rem}
+    .ta-owl-svg{width:36px;height:36px}
+    .ta-badge-label{color:var(--ta);font-weight:900;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase}
+    .ta-stars{display:flex;justify-content:center;gap:.4rem;margin-bottom:1.5rem}
+    .ta-star{width:32px;height:32px;background:var(--ta);clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+    .ta-star.half{background:linear-gradient(90deg,var(--ta) 50%,rgba(52,224,161,.2) 50%)}
+    .ta-h2{font-family:var(--fd);font-size:clamp(2.5rem,5vw,4rem);font-weight:900;color:#fff;margin-bottom:1rem;line-height:1.1}
+    .ta-h2 em{font-style:normal;color:var(--ta)}
+    .ta-sub{color:var(--ts);font-size:1.1rem;max-width:620px;margin:0 auto 3.5rem;line-height:1.7}
+    .ta-ctas{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:4rem}
+    .ta-btn-go{display:inline-flex;align-items:center;gap:.8rem;background:var(--ta);color:#000;padding:1.1rem 2.8rem;border-radius:6px;text-decoration:none;font-weight:900;font-size:.88rem;letter-spacing:.15em;text-transform:uppercase;transition:all .3s;box-shadow:0 10px 30px rgba(52,224,161,.25)}
+    .ta-btn-go:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(52,224,161,.38);background:#2dd496}
+    .ta-btn-write{display:inline-flex;align-items:center;gap:.8rem;border:1px solid rgba(52,224,161,.4);color:var(--ta);padding:1.1rem 2.8rem;border-radius:6px;text-decoration:none;font-weight:700;font-size:.88rem;letter-spacing:.15em;text-transform:uppercase;transition:all .3s;background:rgba(52,224,161,.05)}
+    .ta-btn-write:hover{background:rgba(52,224,161,.14);border-color:var(--ta);transform:translateY(-4px)}
+    .ta-sep{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(52,224,161,.2),transparent);margin-bottom:4rem}
+    .ta-why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+    .ta-why-card{background:rgba(52,224,161,.04);border:1px solid rgba(52,224,161,.1);border-radius:12px;padding:2.5rem 2rem;text-align:center;transition:all .35s}
+    .ta-why-card:hover{background:rgba(52,224,161,.09);border-color:rgba(52,224,161,.3);transform:translateY(-6px)}
+    .ta-why-icon{font-size:2.4rem;margin-bottom:1.2rem;display:block}
+    .ta-why-title{font-family:var(--fd);font-size:1.3rem;color:var(--ta);font-weight:900;margin-bottom:.8rem}
+    .ta-why-text{color:var(--ts);font-size:.95rem;line-height:1.65}
 
-    .bottiglia-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
-    .bottiglia-card {
-      background: var(--green); border: 1px solid rgba(200,169,81,0.15);
-      border-radius: 4px; padding: 1.2rem 1.4rem;
-      display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;
-    }
-    .bottiglia-info .b-name { color: #fff; font-size: 0.93rem; }
-    .bottiglia-info .b-origin { color: var(--gold); font-size: 0.76rem; letter-spacing: 0.08em; }
-    .bottiglia-price { color: var(--gold2); font-family: 'Playfair Display', serif; font-weight: 700; white-space: nowrap; }
+    /* CONTATTI */
+    #contatti{background:var(--gd)}
+    .contatti-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:5rem}
+    .contatti-info h3{font-family:var(--fd);font-size:2rem;color:#fff;margin-bottom:2.5rem}
+    .info-row{display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:1.8rem;padding-bottom:1.8rem;border-bottom:1px solid rgba(255,255,255,.05)}
+    .info-icon{font-size:1.7rem;flex-shrink:0}
+    .info-label{font-size:.78rem;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:var(--gk);margin-bottom:.3rem}
+    .info-value{color:var(--tm);font-size:1rem;line-height:1.6}
+    .info-value a{color:var(--go);text-decoration:none}.info-value a:hover{text-decoration:underline}
+    .orari-table{width:100%;border-collapse:collapse}
+    .orari-table td{padding:.22rem 0;font-size:.93rem}
+    .orari-table td:first-child{color:var(--ts);width:100px;text-transform:capitalize}
+    .orari-table tr.closed td{color:#555}
+    .prenotazione-box{background:linear-gradient(145deg,var(--gb),rgba(0,0,0,.4));border:1px solid var(--gbr);border-radius:12px;padding:3.5rem 3rem;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+    .prenotazione-box h3{font-family:var(--fd);font-size:2rem;font-weight:900;color:var(--go);margin-bottom:1rem}
+    .prenotazione-box p{color:var(--tm);font-size:1rem;margin-bottom:2rem;line-height:1.6}
+    .phone-btn{display:inline-flex;align-items:center;justify-content:center;gap:.8rem;background:linear-gradient(135deg,var(--go),var(--gg));color:var(--gd);padding:1.1rem 2.5rem;border-radius:8px;text-decoration:none;font-weight:900;font-size:1rem;letter-spacing:.08em;transition:all .3s;box-shadow:0 8px 20px rgba(211,168,75,.3)}
+    .phone-btn:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(211,168,75,.4)}
+    .ta-contatti-link{display:inline-flex;align-items:center;gap:.6rem;margin-top:2rem;color:var(--ta);text-decoration:none;font-size:.85rem;font-weight:700;letter-spacing:.12em;opacity:.8;transition:opacity .2s}
+    .ta-contatti-link:hover{opacity:1}
 
-    .gin-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
-    .gin-card {
-      background: var(--green); border: 1px solid rgba(200,169,81,0.15);
-      border-radius: 4px; padding: 1.2rem 1.4rem;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .gin-name { color: #fff; font-size: 0.93rem; }
-    .gin-price { color: var(--gold2); font-family: 'Playfair Display', serif; font-weight: 700; }
+    /* FOOTER */
+    footer{background:#040908;border-top:1px solid rgba(52,224,161,.08);text-align:center;padding:5rem 2rem}
+    .footer-logo-img{height:90px;width:auto;margin:0 auto 1.5rem;display:block;filter:drop-shadow(0 4px 20px rgba(220,179,86,.18))}
+    .footer-sub{font-size:.85rem;font-weight:700;color:var(--ts);letter-spacing:.25em;text-transform:uppercase}
+    .footer-ta{display:inline-flex;align-items:center;gap:.6rem;margin-top:2rem;color:var(--ta);text-decoration:none;font-size:.82rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;opacity:.7;transition:opacity .2s}
+    .footer-ta:hover{opacity:1}
+    .footer-copy{margin-top:2.5rem;font-size:.8rem;color:#3a3a3a}
 
-    /* ── ATMOSFERA ── */
-    #atmosfera { background: var(--green2); }
-    .atm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-    .atm-card {
-      background: rgba(0,0,0,0.25); border: 1px solid rgba(200,169,81,0.18);
-      border-radius: 4px; padding: 2.2rem 1.8rem; text-align: center;
-    }
-    .atm-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-    .atm-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem; color: #fff; margin-bottom: 0.6rem;
-    }
-    .atm-desc { font-size: 0.9rem; color: var(--text); }
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(38px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+    .reveal.visible{opacity:1;transform:none}
 
-    /* ── CONTATTI ── */
-    #contatti { background: #111; }
-    .contatti-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
-    .contatti-info h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem; color: #fff; margin-bottom: 1.5rem;
-    }
-    .info-row {
-      display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.4rem;
-    }
-    .info-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 0.1rem; }
-    .info-label {
-      font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 0.2rem;
-    }
-    .info-value { color: var(--text); font-size: 0.97rem; }
-    .info-value a { color: var(--gold2); text-decoration: none; }
-    .info-value a:hover { text-decoration: underline; }
+    /* PRELOADER */
+    #preloader{position:fixed;inset:0;background:var(--gd);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .7s ease,visibility .7s ease}
+    #preloader.loaded{opacity:0;visibility:hidden;pointer-events:none}
+    .pre-logo{width:220px;height:auto;animation:prePulse 1.8s ease-in-out infinite;filter:drop-shadow(0 10px 40px rgba(220,179,86,.35))}
+    @keyframes prePulse{0%,100%{opacity:.75;transform:scale(1)}50%{opacity:1;transform:scale(1.04)}}
+    .pre-track{margin-top:2.5rem;width:160px;height:2px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden}
+    .pre-fill{height:100%;width:0;background:linear-gradient(90deg,var(--gg),var(--go));animation:preLoad 1.8s ease-out forwards}
+    @keyframes preLoad{0%{width:0}80%{width:85%}100%{width:100%}}
+    .pre-txt{margin-top:1.2rem;font-size:.68rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gk);font-weight:700}
 
-    .prenotazione-box {
-      background: var(--green); border: 1px solid rgba(200,169,81,0.3);
-      border-radius: 4px; padding: 2.5rem;
-    }
-    .prenotazione-box h3 {
-      font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #fff; margin-bottom: 0.5rem;
-    }
-    .prenotazione-box p { color: var(--text); font-size: 0.95rem; margin-bottom: 1.5rem; }
-    .whatsapp-btn {
-      display: inline-flex; align-items: center; gap: 0.7rem;
-      background: #25D366; color: #fff;
-      padding: 0.9rem 1.8rem; border-radius: 4px;
-      text-decoration: none; font-weight: 700; font-size: 0.9rem;
-      transition: opacity 0.2s;
-    }
-    .whatsapp-btn:hover { opacity: 0.88; }
+    /* SCROLL PROGRESS — underline del nav, non copre mai il logo */
+    #progress-bar{position:absolute;bottom:0;left:0;height:2px;width:0%;z-index:1;background:linear-gradient(90deg,var(--gg),var(--ta));pointer-events:none;transition:width .08s linear}
 
-    /* ── FOOTER ── */
-    footer {
-      background: #0a0a0a; border-top: 1px solid rgba(200,169,81,0.15);
-      text-align: center; padding: 3rem 2rem;
-    }
-    .footer-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem; color: var(--gold); margin-bottom: 0.5rem;
-    }
-    .footer-sub { font-size: 0.8rem; color: #666; letter-spacing: 0.15em; text-transform: uppercase; }
-    .footer-copy { margin-top: 2rem; font-size: 0.78rem; color: #444; }
+    /* BACK-TO-TOP */
+    #back-top{position:fixed;bottom:2rem;right:2rem;width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--go),var(--gg));border:none;color:var(--gd);font-size:1.1rem;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(211,168,75,.35);opacity:0;transform:translateY(16px);transition:all .35s cubic-bezier(.4,0,.2,1);pointer-events:none;z-index:88;line-height:1}
+    #back-top.visible{opacity:1;transform:none;pointer-events:auto}
+    #back-top:hover{transform:translateY(-4px)!important;box-shadow:0 12px 30px rgba(211,168,75,.5)}
 
-    /* ── PUB GALLERY ── */
-    #gallery { background: #0d0d0d; padding: 5rem 2rem; }
-    .gallery-intro { text-align: center; margin-bottom: 3rem; }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      grid-template-rows: 280px 280px;
-      gap: 12px; max-width: 1100px; margin: 0 auto;
-    }
-    .gallery-img {
-      overflow: hidden; border-radius: 4px;
-      position: relative;
-    }
-    .gallery-img img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform 0.5s ease; display: block;
-    }
-    .gallery-img:hover img { transform: scale(1.06); }
-    .gallery-img.tall { grid-row: span 2; }
-    .gallery-img.wide { grid-column: span 2; }
-    .gallery-img::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.5));
-      pointer-events: none;
-    }
+    /* HAMBURGER */
+    .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.5rem;z-index:101}
+    .hamburger span{display:block;width:22px;height:2px;background:var(--go);border-radius:2px;transition:transform .3s,opacity .3s}
+    .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+    .hamburger.open span:nth-child(2){opacity:0;transform:translateX(-8px)}
+    .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
 
-    /* ── HERO BG IMAGE ── */
-    .hero-bg-img {
-      position: absolute; inset: 0; z-index: -1;
-      overflow: hidden;
-    }
-    .hero-bg-img img {
-      width: 100%; height: 100%; object-fit: cover;
-      opacity: 0.18; filter: sepia(40%) saturate(60%);
-    }
+    /* ACCORDION */
+    .accordion-group{margin-bottom:.7rem;border-radius:8px;overflow:hidden}
+    .accordion-header{width:100%;background:var(--gb);border:1px solid var(--gbr);border-radius:8px;padding:1.05rem 1.4rem;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:all .3s;text-align:left;gap:1rem}
+    .accordion-header.open{border-radius:8px 8px 0 0;border-color:rgba(220,179,86,.4);background:linear-gradient(90deg,rgba(44,74,52,.6),var(--gb))}
+    .accordion-header:hover:not(.open){background:rgba(44,74,52,.45);border-color:rgba(220,179,86,.2)}
+    .acc-label{font-family:var(--fb);font-weight:700;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--go);flex:1;min-width:0}
+    .acc-range{font-weight:400;color:var(--ts);font-size:.75rem;letter-spacing:.05em}
+    .acc-meta{display:flex;align-items:center;gap:.7rem;flex-shrink:0}
+    .acc-count{font-size:.7rem;background:rgba(220,179,86,.08);border:1px solid rgba(220,179,86,.15);color:var(--ts);padding:.18rem .55rem;border-radius:20px;letter-spacing:.05em;font-weight:700;white-space:nowrap;transition:all .3s}
+    .acc-count.filtered{border-color:var(--gg);color:var(--go);background:rgba(220,179,86,.14)}
+    .acc-chevron{font-size:.7rem;transition:transform .35s cubic-bezier(.4,0,.2,1);color:var(--gg);flex-shrink:0;display:inline-block}
+    .accordion-header.open .acc-chevron{transform:rotate(180deg)}
+    .accordion-body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1);background:var(--gb);border:1px solid rgba(220,179,86,.25);border-top:none;border-radius:0 0 8px 8px}
+    .accordion-body.open{max-height:6000px;transition:max-height .65s ease}
+    .acc-grid{padding:.7rem .7rem .9rem}
 
-    /* ── ATMOSFERA BG ── */
-    #atmosfera {
-      background:
-        linear-gradient(rgba(28,61,40,0.88), rgba(28,61,40,0.92)),
-        url('https://images.unsplash.com/photo-1568644396922-5c3bfae12521?w=1400&q=80') center/cover no-repeat;
+    /* RESPONSIVE */
+    @media(max-width:992px){
+      .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+      .gallery-img.tall,.gallery-img.wide{grid-row:auto;grid-column:auto}
+      .contatti-grid{grid-template-columns:1fr}
+      .ta-why-grid{grid-template-columns:1fr 1fr}
+      .tap-grid{grid-template-columns:1fr}
     }
-
-    /* ── SCROLL REVEAL ── */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      .storia-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .atm-grid { grid-template-columns: 1fr; }
-      .contatti-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .nav-links { display: none; }
-      .birre-promo { flex-direction: column; }
-      .menu-tab { font-size: 0.7rem; padding: 0.8rem 0.4rem; }
-    }
-    @media (max-width: 480px) {
-      .storia-stats { grid-template-columns: 1fr 1fr; }
+    @media(max-width:768px){
+      nav{padding:0 1.5rem}
+      .hamburger{display:flex}
+      .nav-links{display:none!important;position:absolute;top:100%;left:0;right:0;background:rgba(5,12,7,.98);backdrop-filter:blur(20px);flex-direction:column!important;padding:1rem 1.5rem 1.5rem;gap:0!important;border-bottom:1px solid var(--gbr);box-shadow:0 20px 40px rgba(0,0,0,.5)}
+      .nav-links.mobile-open{display:flex!important}
+      .nav-links li{border-bottom:1px solid rgba(255,255,255,.04)}
+      .nav-links a{display:block;padding:.9rem 0;font-size:.85rem!important;letter-spacing:.1em}
+      .nav-ta{border-radius:0!important;border:none!important;border-top:1px solid rgba(52,224,161,.15)!important;background:transparent!important;padding:.9rem 0!important}
+      .storia-grid,.atm-grid{grid-template-columns:1fr;gap:3rem}
+      .ta-why-grid{grid-template-columns:1fr}
+      .birre-promo{flex-direction:column;text-align:center}
+      section{padding:5rem 1.5rem}
+      .menu-tabs{flex-wrap:wrap}
+      .menu-tab{flex:1 1 50%;border-bottom:1px solid var(--gbr)}
+      .acc-label{font-size:.78rem}
     }
   </style>
 </head>
 <body>
 
+<!-- PRELOADER -->
+<div id="preloader">
+  <img src="logo.png" alt="La Voglia" class="pre-logo"/>
+  <div class="pre-track"><div class="pre-fill"></div></div>
+  <div class="pre-txt">Caricamento&hellip;</div>
+</div>
+
 <!-- NAV -->
-<nav>
-  <div class="nav-logo">La Voglia</div>
+<nav id="main-nav">
+  <a href="#" class="nav-logo"><img src="logo-navbar.png" alt="La Voglia"/></a>
+  <button class="hamburger" onclick="toggleMobileNav()" aria-label="Menu"><span></span><span></span><span></span></button>
   <ul class="nav-links">
     <li><a href="#storia">Storia</a></li>
     <li><a href="#birre">Birre</a></li>
     <li><a href="#menu">Menu</a></li>
     <li><a href="#atmosfera">Atmosfera</a></li>
+    <li><a href="#tripadvisor">Recensioni</a></li>
     <li><a href="#contatti">Contatti</a></li>
+    <li><a href="https://www.tripadvisor.it/Restaurant_Review-g1175110-d3924329-Reviews-Bar_La_Voglia-Vercelli_Province_of_Vercelli_Piedmont.html" target="_blank" rel="noopener" class="nav-ta">★ TripAdvisor</a></li>
   </ul>
+  <div id="progress-bar"></div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <!-- Background pub image -->
-  <div class="hero-bg-img">
-    <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=1600&q=80" alt="Pub britannico" />
-  </div>
+  <div class="hero-bg-img"><img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=1600&q=80" alt="Pub"/></div>
   <div class="hero-badge">Vercelli · Est. 1989</div>
-
-  <!-- Logo SVG reale -->
-  <div class="hero-logo-wrap">
-    <svg xmlns="http://www.w3.org/2000/svg" id="sv_hero" style="width:220px;height:auto;filter:drop-shadow(0 0 24px rgba(200,169,81,0.4));" version="1.1" viewBox="0 0 97.5 75.8">
-  
-  <polygon points="53.6 32 53.6 32 53.6 32 53.6 32" fill="#c8a951" />
-  <path d="M35.5,18.2l-.7-.3c1,3.2-1.4,8-1.4,8-2.3,4.9-4.1,4.4-4.1,4.4,0,0-.3-.1-.5-.7-1-2.9,1-6.6,1-6.6.8-.3,1.3-.4,1.7-.7,1.9-1.1,1.3-2,1.3-2-.4-.6-1.9-.4-2.8.4-.9.8-1.4,1.6-1.4,1.6-5.4.7-6.3,1.4-6.3,1.4-1.3.8-1.4,2.1-1.2,2.9.2.8.6,1,.6,1,2.2,1.5,4-1.4,4-1.4-1.7.1-1.3-1.1-1.3-1.1.4-1.6,3.6-2,3.6-2-1.6,2.4-2.2,4.3-2.2,5.6,0,2.3,1.6,2.9,1.6,2.9,3.3,1.4,5.9-4,5.9-4,2.6-5.4,2.3-9.4,2.3-9.4ZM32,21s.4.6-1.4,1c0,0,.9-1.6,1.4-1Z" fill="#c8a951" />
-  <path d="M39.4,23.6s0-.7-1.4-.6c0,0-1.7,0-3.1,2.9,0,0-.9,1.9.5,2.7,0,0,1.3.7,2.4-.7,0,0,.9-1.2.6-1.9,0,0,1.2-.7,1-2.4ZM37.2,26.4c.1.1.8-.2.8-.2-1.4,1.9-1.8,1-1.8,1-.4-1,0-2.3.8-3,.4-.4.8-.5.9-.3.4.4-.1,1.2-.1,1.2-.8,1.1-.6,1.2-.5,1.3Z" fill="#c8a951" />
-  <path d="M44.5,30.1c-.2-1-1.5-1.2-3.4-1,.1-.3.4-.7.7-1.3.3-.2.7-.6.9-1h-.2c-.2,0-1,.9-1.5.6,0,0-.7-.5,0-2.1,0,0,.9-1.5,1.7-1.3,0,0,.2,0-.2.8-.1.2-.3.5-.5.6,0,0-.2,0-.4-.3,0,0-.1.1-.2.4,0,.3,0,.8.8.7.8-.2,1.1-.5,1.3-.8,0,0,.2-.4.2-.5,0-.1,0-.3,0-.4,0-.3-.1-.6-.3-.8-.8-.7-2.2-.3-3.2.9-1,1.1-1.5,2.6-.8,3.2.2.2.6.2.9.2-.3.3-.7.9-.8,1.3,0,.1,0,.3,0,.4.4,0,2,0,2.3,0,.3,0,.5.1.7.3l1.9.2c0,0,0-.1,0-.1Z" fill="#c8a951" />
-  <path d="M43.4,32c-.6.5-1.3.9-2.1,1-2,.5-3.7.1-4.2-1.2,0,0,0,0,0-.1,0,0,0,0,0,0,0-.2-.1-.6,0-1.3,0,.4,0,.9.7,1.2,0,0,0,0,0,0,.4.2.8.4,2.4.4s.9,0,1.3-.2h1.8Z" fill="#c8a951" />
-  <path d="M55.1,25.3c.4-1.1.5-2,.5-2.7,0-1.9-.6-2.2-1.1-2.3-2.2-.4-3,1.4-3,1.4-.2.3-.3.7-.3.9,0,.7.3.7.3.7.5.2.8-.5.8-.7,0-.5-.5-.5-.5-.5.4-1.2,1.4-1.3,1.4-1.3,2,0,.9,3.3.9,3.3-.3-.5-.8-.5-1.1-.5-1.9.3-3,1.9-3.4,3.2s-.2,1.3-.2,1.5c0,2.2,2.5,1.8,4,.3s1.4-2,1.4-2c1.2,2.2-1.5,3.9-3.5,4s-4.2,0-6.4-.2c-.1,0-.2,0-.4,0-.3,0-.6,0-.9,0-.2,0-.4,0-.6,0-.2,0-.4,0-.6,0-4.4-.4-6.6-.6-8-.3-3.2.8-4.8,3.3-4.8,3.3,2.2-1.7,6.3-1.2,6.3-1.2.1-.2.5-.3,1-.4,0,0-.2-.6,0-1.6h.5s-.2,1,.9,1.4c1,0,2.1,0,3.1,0,.4,0,.8,0,1.1,0,.4,0,.9,0,1.2,0,.2,0,.5,0,.6,0,.4,0,.7,0,.7,0,3.9.2,6,.1,7.3-.2,1.4-.4,1.7-.7,2.3-1.2,1.9-1.5.4-5,.4-5ZM51,28.3s-1.2.1-.9-1.4c0,0,.7-2.2,2.4-2.1,0,0,.9,0,1.1.5,0,0-1.1,2.6-2.6,2.9Z" fill="#c8a951" />
-  <path d="M45.1,21.7l1.9-.6s.3,0,.2.2l-1.6,5.4s-.2.7.1.8l-1.5.6s-.6-.2,0-1.9l1.5-3.9s.2-.4,0-.4h-.5c0,0,0,0,0,0Z" fill="#c8a951" />
-  <path d="M46.6,26s.6-.4,1.2-1.3l1.5-.4s-.3,1.6-.8,2.9c0,0-.2.6.2.7l-1.5.5s-.7-.2,0-1.8l.5-1.2s-.8.8-1.1.8v-.2Z" fill="#c8a951" />
-  <path d="M49.4,22.9s-1.3-.4-1.5.7c0,0,0,.5.9.2,0,0,.6-.2.6-.8Z" fill="#c8a951" />
-  <path d="M25.5,20.1h.3c0-.2,0-.2.1-.1.1,0,0,.4-.3.5s-.3.2-.5.1l-.3-.3c-.2.1-.3.2-.5.3s-.4-.1-.5-.3l-.7.2c-.2,0-.5,0-.7,0-.6-.3-.5.1-.9,0s-.2,0-.2-.2c0-.3.6-.3.7-.7s0-.3.1-.8.1-.4.2-.6c.2-.3.5-.5.8-.5s.4,0,.5.2.2.3.2.5c0,.3-.3.6-.6.7s-.2,0-.3,0,0-.2,0-.3.3-.1.4-.2,0-.4,0-.5c0,0-.2,0-.3,0s-.1.2-.1.3c-.1.4,0,.5-.1.8l-.3.7c.3.2.7.3,1,.2s.3-.2.4-.4c0-.3.3-.6.6-.8s.5,0,.8,0,.3-.1.4,0l-.2.7c0,.1,0,.2,0,.5ZM24.9,19.2c-.4-.1-.7,1-.4.9.4,0,.5-.9.4-.9Z" fill="#c8a951" />
-  <g>
-    <path d="M46,34.5c0,.2,0,.4,0,.7.2,0,.4,0,.6,0s.1-.1.2-.2c0,.1,0,.2-.1.3h-1.1c0,0,.2-.1.2-.2v-1.1c0-.1,0-.2-.2-.2h.9c0,0,.1,0,.1,0s0,.2,0,.2c0,0-.1-.1-.2-.1h-.5c0,.2,0,.4,0,.6h.5s0,0,.1-.1c0,.1,0,.2,0,.3,0,0-.1-.1-.2-.1h-.4Z" fill="#c8a951" />
-    <path d="M48.1,34.9c0,.3-.4.5-.6.4h-.1c0,0,0,0-.2,0v-.2c0,0,0-.1,0-.1,0,.2.2.4.4.3s.2,0,.3-.2,0-.2-.1-.3l-.4-.3c-.2-.1-.3-.3-.2-.5s.2-.3.5-.3c.3,0,.2.1.4,0v.5c0-.2-.2-.4-.4-.4s-.3.1-.3.2.2.2.3.3l.3.2c.2,0,.2.3.2.4Z" fill="#c8a951" />
-    <path d="M53.3,34.8c0,.2-.1.4-.3.4s-.2,0-.3,0c-.2,0-.3-.3-.2-.4s.1-.2.2-.3c-.2-.2-.4-.4-.2-.6s.2-.2.3-.2c.2,0,.5,0,.5.3s-.3.3-.3.4.2,0,.3.4ZM52.9,34.3c0,0,.2-.2.2-.2s0-.2,0-.3-.2,0-.3,0-.2.1-.1.3.2.2.3.3ZM52.8,34.5c-.2.1-.2.4-.1.6s.3,0,.4,0c.2-.2-.1-.5-.3-.6Z" fill="#c8a951" />
-    <path d="M53.7,35.2c.2,0,.5-.4.5-.6-.1,0-.2,0-.3,0-.2,0-.3-.1-.3-.3,0-.2,0-.4.1-.6s.2-.1.4-.1c.3,0,.6.7.1,1.3s-.4.4-.5.3ZM54.2,34.5c.1-.3,0-.8-.3-.7s-.1,0-.2.1c-.2.3,0,.6.2.7s.2,0,.2-.1Z" fill="#c8a951" />
-    <path d="M51.5,35.2c.2,0,.3-.2.4-.4s0-.1,0-.2c0,0-.2,0-.3,0-.3,0-.4-.2-.4-.5s.1-.4.3-.5.2,0,.3,0c.5.2.4,1,0,1.3-.1.1-.2.3-.5.2ZM52,34.3c0-.2,0-.5-.2-.6s-.3,0-.3.2c0,.1,0,.2,0,.4,0,0,0,.2.1.2s.1,0,.2,0,.1,0,.2-.2Z" fill="#c8a951" />
-    <path d="M49.1,35.2c-.2,0-.3,0-.5,0,0,0,.2,0,.2-.2v-1.2c-.1,0-.2,0-.3,0h-.2c0,0,0,0,0-.1h1.1c0,0,0,.2,0,.3,0-.2-.4-.2-.5-.1v1.2c0,0,0,.1.1.2Z" fill="#c8a951" />
-    <path d="M50.4,35.2c0,0,.1,0,.1-.2v-1.1c0,0,0-.1-.1-.2,0,0,.2,0,.3-.1v1.4c0,0,0,.1.2.2-.1,0-.3,0-.4,0Z" fill="#c8a951" />
-  </g>
-  <path d="M55.3,44.2H23.3c0,0,0-.2-.1-.2l-.2-.6c-.2-.6-.5-1.2-.9-1.7-.5-.8-1.3-1.8-2-2.5s-.5-.5-.8-.8l-.3-.3-.6-.5c-.2-.2-.5-.4-.7-.5l-.5-.4c-.3-.2-.5-.4-.8-.5l-.7-.4c-.8-.5-1.7-.8-2.7-1.1l-.6-.2v-17.5c0-.1.3-.1.5-.1h.4c0,0,.2,0,.3-.1,1.4-.3,2.9-1.1,4-1.9l.5-.3c.2-.2.5-.4.7-.6,1.3-1.1,2.3-2.4,3.2-3.8s.4-.6.6-1l.3-.6.5-1.1h32s.4.9.4.9l.3.6.4.7c1.3,2.4,3.9,5.2,6.5,6.5s1.5.6,2.2.7.2,0,.3,0c.6,0,.4,0,.7,0h.1s0,0,0,.1v17.6s0,0,0,.1,0,0,0,0h-.3s-.3,0-.3,0c-.3,0-.6,0-.9.2-1,.3-1.8.7-2.7,1.3-2,1.3-3.9,3.2-5.2,5.1s-.4.7-.7,1h0s-.5.9-.5.9v.3c-.1,0-.1,0-.1,0h0s0,0,0,0v.3c-.1,0-.2,0-.2,0h0s0,0,0,0h0s0,0,0,0h0s0,0,0,0ZM54.1,42.2l.4-.6c1.1-1.9,3-4.2,4.9-5.6l.5-.4.3-.2.4-.3c.8-.6,2.1-1.3,3.1-1.6h.4c0-.1.2-.2.2-.3v-14.5c0,0,0-.1,0-.1-1.2-.2-2.2-.7-3.2-1.3s-1.1-.7-1.7-1.2l-.4-.3c-.1-.1-.3-.2-.4-.3l-.6-.6-.3-.3-.3-.3-.2-.2c-1.3-1.4-2.4-3-3.2-4.6s0-.1-.2-.1h-29.1c-.1.1-.2.3-.3.5l-.3.6c-1.4,2.5-4.1,5.5-6.8,6.9h-.2c-.8.5-1.6.9-2.5,1.1s-.2,0-.2.2v14.6c0,0,0,.1.1.2.5.2,1.1.4,1.5.6l.4.2c1.1.5,2,1.1,3,1.8s.4.3.6.5l.8.7c1.3,1.1,2.6,2.7,3.4,4.1s.3.6.5.9,0,.1.1.1h29.1c.1,0,.1-.1.2-.2Z" fill="#c8a951" />
-  <path d="M25.2,40.4l-.3-.6c-.1-.3-.3-.6-.5-.9l-.3-.4c-.2-.3-.5-.8-.8-1l-.2-.2-.2-.3-.2-.2c-.4-.4-.7-.7-1.2-1l-.3-.2c-1.1-.8-2.3-1.5-3.5-2.1l-.7-.3c-.2-.1-.4-.2-.7-.3v-13.7c0,0,.5-.2.6-.3.6-.3,1.2-.5,1.8-.9.9-.5,1.7-1,2.4-1.7s.5-.4.7-.6l.6-.5c.2-.2.4-.4.6-.7.9-1,1.8-2.3,2.2-3.6v-.2c0,0,0-.1.1-.2h27.4c0,0,.1.1.1.2.3.8.6,1.5,1.1,2.2s.8,1.2,1.3,1.7.7.7,1,1l.7.6c1.4,1.2,3.1,2.1,4.9,2.7s0,0,0,.1v13.8s-1.2.4-1.2.4c-1,.3-2.5,1.3-3.3,1.9l-.6.5-.3.3-.5.4-.4.4-.2.2c-.4.4-.7.8-1.1,1.3s-.3.5-.5.7c-.4.7-.8,1.4-1,2.2s0,.1,0,.2c0,0-.2,0-.3,0h-27c-.1,0-.2,0-.3,0l-.3-.8ZM26.2,40.2c0,0,0,.1.2.1h25.8c.2,0,.1,0,.1,0,.3-.6.6-1.3.9-1.8l.3-.5c.8-1.1,2.1-2.5,3.2-3.4l.5-.4c1.1-.8,2.5-1.6,3.9-2.1v-12.7s0,0,0,0c-1.2-.5-2.3-1-3.3-1.7s-.3-.2-.4-.3l-.7-.5-.4-.4c-.3-.2-.6-.5-.8-.7l-.4-.4c-.6-.6-1.1-1.3-1.5-2s-.7-1.2-1-1.9,0-.1-.1-.2h-25.9c0,0-.1.2-.1.3-.2.6-.5,1.1-.8,1.6-.6,1-1.5,1.9-2.4,2.8s-.5.5-.9.8l-.5.4-.5.4-.3.2c-.6.4-1.3.9-2,1.2l-.7.3c-.1,0-.3.1-.4.2s-.3,0-.3.2v12.6s1.4.7,1.4.7l.7.4c1.5.8,2.9,1.8,4,3s.3.3.4.5l.4.5c.6.8,1.1,1.7,1.5,2.6l.2.5Z" fill="#c8a951" />
-</svg>
-  </div>
-
-  <h1>La <span>Voglia</span></h1>
+  <div class="hero-logo-wrap"><img src="logo.png" alt="La Voglia"/></div>
   <p class="hero-sub">Pub · Birreria · Bar — Vercelli</p>
   <div class="hero-divider"></div>
   <p class="hero-tagline">Un posto storico dove ogni birra racconta una storia, ogni panino è una scoperta.</p>
   <div class="hero-cta">
     <a href="#birre" class="btn-primary">Le Nostre Birre</a>
-    <a href="#menu" class="btn-outline">Scopri il Menu</a>
+    <a href="#menu" class="btn-outline">100 Panini</a>
+    <a href="#tripadvisor" class="btn-ta">★ Recensioni</a>
   </div>
 </section>
 
@@ -477,28 +336,16 @@
         <p>Ogni dettaglio è curato: dalla selezione delle birre alle combinazioni dei panini, costruite in oltre trent'anni di esperienza.</p>
       </div>
       <div class="storia-stats">
-        <div class="stat-card">
-          <div class="stat-number">35+</div>
-          <div class="stat-label">Anni di storia</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">100</div>
-          <div class="stat-label">Panini in menu</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">8</div>
-          <div class="stat-label">Birre alla spina</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">1</div>
-          <div class="stat-label">Birra nuova al mese</div>
-        </div>
+        <div class="stat-card"><div class="stat-number">35+</div><div class="stat-label">Anni di storia</div></div>
+        <div class="stat-card"><div class="stat-number">100</div><div class="stat-label">Panini in menu</div></div>
+        <div class="stat-card"><div class="stat-number">7</div><div class="stat-label">Birre alla spina</div></div>
+        <div class="stat-card"><div class="stat-number">1</div><div class="stat-label">Birra nuova al mese</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BIRRE -->
+<!-- BIRRE ALLA SPINA -->
 <section id="birre">
   <div class="container">
     <div class="reveal">
@@ -506,66 +353,171 @@
       <h2 class="section-title">Birre alla <span>Spina</span></h2>
       <div class="section-line"></div>
     </div>
-    <div class="birre-grid reveal">
-      <div class="birra-card">
-        <div class="birra-flag">🇨🇿</div>
-        <div class="birra-name">Pilsner Urquell</div>
-        <div class="birra-origin">Repubblica Ceca · 4.4%</div>
-        <div class="birra-desc">La Pilsner originale. Amara, dorata, classica. Piccola €3,50 · Media €5,50 · Litro €11</div>
+    <div class="tap-grid reveal">
+
+      <!-- Pilsner Urquell -->
+      <div class="tap-card">
+        <div class="tap-disc" style="--disc-bg:linear-gradient(135deg,#f8f8f0 0%,#e8e8d8 100%);--disc-border:#1B5E20;--disc-ring:rgba(27,94,32,.4);--disc-text:#C8102E;--disc-sub:#555">
+          <div class="td-flag">🇨🇿</div>
+          <div class="td-name" style="color:#C8102E">Pilsner Urquell</div>
+          <div class="td-abv" style="color:#1B5E20">Pilsner · 4.4%</div>
+        </div>
+        <div class="tap-info">
+          <div class="tap-name">Pilsner Urquell</div>
+          <div class="tap-origin">🇨🇿 Repubblica Ceca · Pilsner</div>
+          <div class="tap-desc">La Pilsner originale dal 1842. Amara, dorata, cristallina. L'archetipo di uno stile mondiale.</div>
+          <div class="tap-prices">
+            <div class="tap-price-chip">Piccola <strong>€3,50</strong></div>
+            <div class="tap-price-chip">Media <strong>€5,50</strong></div>
+            <div class="tap-price-chip">Litro <strong>€11</strong></div>
+          </div>
+        </div>
       </div>
-      <div class="birra-card">
-        <div class="birra-flag">🇬🇧</div>
-        <div class="birra-name">London Pride</div>
-        <div class="birra-origin">Fuller's · Inghilterra</div>
-        <div class="birra-desc">Bitter inglese iconico. Rame brillante, malto e frutta.</div>
+
+      <!-- London Pride -->
+      <div class="tap-card">
+        <div class="tap-disc" style="--disc-bg:radial-gradient(circle,#8B1A1A 0%,#560000 100%);--disc-border:#C8A000;--disc-ring:rgba(200,160,0,.35)">
+          <div class="td-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div>
+          <div class="td-name">London Pride</div>
+          <div class="td-abv">Bitter · 4.7%</div>
+        </div>
+        <div class="tap-info">
+          <div class="tap-name">Fuller's London Pride</div>
+          <div class="tap-origin">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Inghilterra · English Bitter</div>
+          <div class="tap-desc">L'iconico bitter di Fuller's. Rame brillante, sentori di malto tostato e frutta. Classico britannico.</div>
+          <div class="tap-prices">
+            <div class="tap-price-chip">Piccola <strong>€3,70</strong></div>
+            <div class="tap-price-chip">Media <strong>€6,00</strong></div>
+            <div class="tap-price-chip">Litro <strong>€12</strong></div>
+          </div>
+        </div>
       </div>
-      <div class="birra-card">
-        <div class="birra-flag">🇨🇿</div>
-        <div class="birra-name">Kozel Dark</div>
-        <div class="birra-origin">Repubblica Ceca · Lager scura</div>
-        <div class="birra-desc">Vellutata, caramellata, sorprendentemente morbida.</div>
+
+      <!-- Kozel Dark -->
+      <div class="tap-card">
+        <div class="tap-disc" style="--disc-bg:radial-gradient(circle,#6D3B1A 0%,#3D1F08 100%);--disc-border:#D4A017;--disc-ring:rgba(212,160,23,.3)">
+          <div class="td-flag">🇨🇿</div>
+          <div class="td-name">Kozel Dark</div>
+          <div class="td-abv">Lager Scura · 3.5%</div>
+        </div>
+        <div class="tap-info">
+          <div class="tap-name">Velkopopovický Kozel Dark</div>
+          <div class="tap-origin">🇨🇿 Repubblica Ceca · Dark Lager</div>
+          <div class="tap-desc">Vellutata, caramellata, sorprendentemente morbida e leggera. La dark lager ceca per eccellenza.</div>
+          <div class="tap-prices">
+            <div class="tap-price-chip">Piccola <strong>€3,70</strong></div>
+            <div class="tap-price-chip">Media <strong>€6,00</strong></div>
+            <div class="tap-price-chip">Litro <strong>€12</strong></div>
+          </div>
+        </div>
       </div>
-      <div class="birra-card">
-        <div class="birra-flag">🇳🇱</div>
-        <div class="birra-name">Grolsch Weizen</div>
-        <div class="birra-origin">Olanda · Frumento</div>
-        <div class="birra-desc">Freschezza agrumata, note di banana. Perfetta in estate.</div>
+
+      <!-- Grolsch Weizen -->
+      <div class="tap-card">
+        <div class="tap-disc" style="--disc-bg:radial-gradient(circle,#2E7D32 0%,#0D4A10 100%);--disc-border:#FFD700;--disc-ring:rgba(255,215,0,.3)">
+          <div class="td-flag">🇳🇱</div>
+          <div class="td-name">Grolsch Weizen</div>
+          <div class="td-abv">Frumento · 5.3%</div>
+        </div>
+        <div class="tap-info">
+          <div class="tap-name">Grolsch Weizen</div>
+          <div class="tap-origin">🇳🇱 Olanda · Weizen</div>
+          <div class="tap-desc">Freschezza agrumata, note di banana e spezie. Soffice e cremosa, perfetta abbinata a panini leggeri.</div>
+          <div class="tap-prices">
+            <div class="tap-price-chip">Piccola <strong>€3,70</strong></div>
+            <div class="tap-price-chip">Media <strong>€6,00</strong></div>
+            <div class="tap-price-chip">Litro <strong>€12</strong></div>
+          </div>
+        </div>
       </div>
-      <div class="birra-card">
-        <div class="birra-flag">🇩🇪</div>
-        <div class="birra-name">Andechs Dunkel</div>
-        <div class="birra-origin">Baviera · Doppelbock</div>
-        <div class="birra-desc">Monastica e intensa. Cioccolato, pane tostato, struttura corposa.</div>
+
+      <!-- Andechs Doppelbock Dunkel -->
+      <div class="tap-card">
+        <div class="tap-disc" style="--disc-bg:radial-gradient(circle,#1A237E 0%,#080E50 100%);--disc-border:#FFFFFF;--disc-ring:rgba(255,255,255,.2)">
+          <div class="td-flag">🇩🇪</div>
+          <div class="td-name">Andechs</div>
+          <div class="td-abv">Doppelbock · 7%</div>
+        </div>
+        <div class="tap-info">
+          <div class="tap-name">Kloster Andechs Doppelbock Dunkel</div>
+          <div class="tap-origin">🇩🇪 Baviera · Doppelbock</div>
+          <div class="tap-desc">Monastica e intensa. Cioccolato fondente, pane tostato, struttura corposa. La birra del monastero bavarese.</div>
+          <div class="tap-prices">
+            <div class="tap-price-chip">Piccola <strong>€3,70</strong></div>
+            <div class="tap-price-chip">Media <strong>€6,00</strong></div>
+            <div class="tap-price-chip">Litro <strong>€12</strong></div>
+          </div>
+        </div>
       </div>
-      <div class="birra-card">
-        <div class="birra-flag">🇧🇪</div>
-        <div class="birra-name">Delirium Tremens</div>
-        <div class="birra-origin">Belgio · Strong Blond · 8.5%</div>
-        <div class="birra-desc">Iconica bottiglia rosa. Complessa, speziata, leggendaria.</div>
+
+      <!-- Delirium Tremens -->
+      <div class="tap-card">
+        <div class="tap-disc" style="--disc-bg:radial-gradient(circle,#1565C0 0%,#003898 100%);--disc-border:#FFB3C6;--disc-ring:rgba(255,179,198,.3)">
+          <div class="td-flag">🇧🇪</div>
+          <div class="td-name">Delirium Tremens</div>
+          <div class="td-abv">Strong Blond · 8.5%</div>
+        </div>
+        <div class="tap-info">
+          <div class="tap-name">Delirium Tremens</div>
+          <div class="tap-origin">🇧🇪 Belgio · Strong Golden Ale</div>
+          <div class="tap-desc">L'iconica bottiglia rosa con gli elefanti. Complessa, speziata, leggendaria. Una delle migliori belghe al mondo.</div>
+          <div class="tap-prices">
+            <div class="tap-price-chip">Piccola <strong>€3,70</strong></div>
+            <div class="tap-price-chip">Media <strong>€6,00</strong></div>
+            <div class="tap-price-chip">Litro <strong>€12</strong></div>
+          </div>
+        </div>
       </div>
-      <div class="birra-card">
-        <div class="birra-flag">🇮🇹</div>
-        <div class="birra-name">Ducato Freeride</div>
-        <div class="birra-origin">Italia · West Coast IPA · 7.2%</div>
-        <div class="birra-desc">IPA artigianale italiana. Luppolata, resinosa, moderna.</div>
+
+      <!-- Ducato Freeride -->
+      <div class="tap-card">
+        <div class="tap-disc" style="--disc-bg:radial-gradient(circle,#E65100 0%,#8C3400 100%);--disc-border:#FFD54F;--disc-ring:rgba(255,213,79,.3)">
+          <div class="td-flag">🇮🇹</div>
+          <div class="td-name">Ducato Freeride</div>
+          <div class="td-abv">West Coast IPA · 7.2%</div>
+        </div>
+        <div class="tap-info">
+          <div class="tap-name">Birrificio del Ducato Freeride</div>
+          <div class="tap-origin">🇮🇹 Italia · West Coast IPA</div>
+          <div class="tap-desc">IPA artigianale italiana. Luppolata, resinosa, agrumata. La migliore espressione del craft italiano.</div>
+          <div class="tap-prices">
+            <div class="tap-price-chip">Piccola <strong>€3,70</strong></div>
+            <div class="tap-price-chip">Media <strong>€6,00</strong></div>
+            <div class="tap-price-chip">Litro <strong>€12</strong></div>
+          </div>
+        </div>
       </div>
-      <div class="birra-card" style="border-color: var(--gold); background: rgba(200,169,81,0.08);">
-        <div class="birra-flag">🔄</div>
-        <div class="birra-name">Birra del Mese</div>
-        <div class="birra-origin">A rotazione mensile</div>
-        <div class="birra-desc">Ogni mese una novità da scoprire. Chiedici quale è disponibile!</div>
+
+      <!-- Birra del Mese -->
+      <div class="tap-card" style="border-color:rgba(220,179,86,.4)">
+        <div class="tap-disc" style="--disc-bg:radial-gradient(circle,#5D4037 0%,#2C1B0E 100%);--disc-border:var(--gg);--disc-ring:rgba(220,179,86,.3)">
+          <div class="td-flag">🔄</div>
+          <div class="td-name">Birra del Mese</div>
+          <div class="td-abv">A rotazione</div>
+        </div>
+        <div class="tap-info">
+          <div class="tap-name" style="color:var(--gg)">Birra del Mese</div>
+          <div class="tap-origin">🌍 A rotazione mensile</div>
+          <div class="tap-desc">Ogni mese una novità da scoprire — una birra speciale che arriva direttamente da noi al tuo bicchiere. Chiedi quale è disponibile!</div>
+          <div class="tap-prices">
+            <div class="tap-price-chip">Piccola <strong>€3,70</strong></div>
+            <div class="tap-price-chip">Media <strong>€6,00</strong></div>
+            <div class="tap-price-chip">Litro <strong>€12</strong></div>
+          </div>
+        </div>
       </div>
+
     </div>
 
-    <div class="birre-promo reveal" style="margin-top:2.5rem;">
-      <div class="birre-promo-text">
+    <!-- Promo 4 birre in degustazione -->
+    <div class="birre-promo reveal">
+      <div class="birre-promo-txt">
         <h3>Indeciso su quale birra provare?</h3>
-        <p>Assaggia 4 birre alla spina in degustazione — la soluzione perfetta per chi vuole esplorare.</p>
-        <p style="margin-top:0.5rem; color: var(--gold); font-size:0.85rem;">🍺 Giraffe disponibili fino a 4 litri · Piccola €3,70 · Media €6,00 · Litro €12</p>
+        <p>Assaggia 4 birre alla spina in degustazione — la soluzione perfetta per chi vuole esplorare la nostra selezione. Giraffe disponibili fino a 4 litri.</p>
       </div>
-      <div class="promo-badge">
-        <div class="price">€ 9,00</div>
-        <div class="price-label">4 birre in degustazione</div>
+      <div class="promo-pill">
+        <div class="pp-price">€9,00</div>
+        <div class="pp-label">4 birre in degustazione</div>
       </div>
     </div>
   </div>
@@ -579,153 +531,249 @@
       <h2 class="section-title">Il nostro <span>Menu</span></h2>
       <div class="section-line"></div>
     </div>
-
     <div class="menu-tabs reveal">
-      <button class="menu-tab active" onclick="showTab('panini', this)">🥖 Panini</button>
-      <button class="menu-tab" onclick="showTab('toast', this)">🍕 Focacce &amp; Toast</button>
-      <button class="menu-tab" onclick="showTab('bottiglia', this)">🍺 Birre in Bottiglia</button>
-      <button class="menu-tab" onclick="showTab('gin', this)">🍸 Gin Tonic</button>
+      <button class="menu-tab active" onclick="showTab('panini',this)">🥖 100 Panini</button>
+      <button class="menu-tab" onclick="showTab('toast',this)">🍕 Focacce &amp; Toast</button>
+      <button class="menu-tab" onclick="showTab('bottiglia',this)">🍺 Birre Bottiglia</button>
+      <button class="menu-tab" onclick="showTab('gin',this)">🍸 Gin Tonic</button>
     </div>
 
-    <!-- PANINI -->
-    <div id="tab-panini" class="menu-panel active reveal">
-      <div class="panini-note">
-        <strong>100 panini numerati.</strong> Un menu unico che si rinnova continuamente. Disponibile anche <strong>senza glutine</strong> (+€1,50). Per panini fuori lista o modifiche, chiedere il prezzo preventivo.
+    <!-- ═══ 100 PANINI ═══ -->
+    <div id="tab-panini" class="menu-panel active">
+      <div class="panini-note"><strong>100 panini numerati.</strong> Un menu unico che si rinnova continuamente. Disponibile anche <strong>senza glutine</strong> (+€1,50). Per panini fuori lista o modifiche chiedere il prezzo preventivo.</div>
+      <div class="panini-search-row">
+        <input class="panini-search" id="panini-search" type="text" placeholder="🔍  Cerca per ingrediente..." oninput="filterPanini(this.value)"/>
+        <div class="panini-counter">Mostrati: <span id="panini-count">100</span> / 100</div>
       </div>
-      <div class="panini-highlight-grid">
-        <div class="panino-card"><div><div class="panino-num">N° 14</div><div class="panino-name">Gamberetti in salsa al rum, insalata</div></div><div class="panino-price">6,00€</div></div>
-        <div class="panino-card"><div><div class="panino-num">N° 16</div><div class="panino-name">Hamburger alla diavola — senape, ketchup, cipolle, peperoncino</div></div><div class="panino-price">5,20€</div></div>
-        <div class="panino-card"><div><div class="panino-num">N° 21</div><div class="panino-name">Bresaola, pepe, sale, olio, limone</div></div><div class="panino-price">5,00€</div></div>
-        <div class="panino-card"><div><div class="panino-num">N° 31</div><div class="panino-name">Prosciutto crudo, gamberetti in salsa al rum</div></div><div class="panino-price">6,50€</div></div>
-        <div class="panino-card"><div><div class="panino-num">N° 54</div><div class="panino-name">Bresaola, vodka, limone, salsa asparagi, mozzarella, salsa al rum</div></div><div class="panino-price">5,90€</div></div>
-        <div class="panino-card"><div><div class="panino-num">N° 70</div><div class="panino-name">Hamburger, pesto di pistacchi, crudo croccante, crema formaggi</div></div><div class="panino-price">6,80€</div></div>
-        <div class="panino-card"><div><div class="panino-num">N° 76</div><div class="panino-name">Bresaola, pesto di pistacchi, crema di formaggi</div></div><div class="panino-price">5,70€</div></div>
-        <div class="panino-card"><div><div class="panino-num">N° 87</div><div class="panino-name">Hamburger, caprino, verdure grigliate, maionese, crudo croccante</div></div><div class="panino-price">6,90€</div></div>
-        <div class="panino-card"><div><div class="panino-num">N° 88</div><div class="panino-name">Doppio hamburger, maionese, pomodoro, ketchup, fontal, insalata</div></div><div class="panino-price">7,50€</div></div>
-        <div class="panino-card"><div><div class="panino-num">N° 93</div><div class="panino-name">Fesa tacchino, maionese, cipolle, pomodoro, uovo, senape, fontal, crudo croccante</div></div><div class="panino-price">6,90€</div></div>
-        <div class="panino-card"><div><div class="panino-num">N° 96</div><div class="panino-name">Gamberetti, pecorino, pomodoro, pesto al sesamo</div></div><div class="panino-price">6,60€</div></div>
-        <div class="panino-card" style="border-color:var(--gold); background: rgba(200,169,81,0.07);"><div><div class="panino-num">+ altri 89</div><div class="panino-name">Panini — vieni a scoprire tutti i 100!</div></div><div class="panino-price">da 3,60€</div></div>
+      <div id="panini-grid">
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 1</div><div class="item-name">Prosciutto cotto, uovo tonno, insalata, mozzarella, maionese o tonnè</div></div><div class="item-price">4,80€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 2</div><div class="item-name">Prosciutto crudo</div></div><div class="item-price">3,90€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 3</div><div class="item-name">Prosciutto crudo, brié</div></div><div class="item-price">4,50€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 4</div><div class="item-name">Fontal, formaggio tipo caprino, brié, crema di formaggi</div></div><div class="item-price">4,40€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 5</div><div class="item-name">Fesa di tacchino arrosto, tonnè</div></div><div class="item-price">4,30€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 6</div><div class="item-name">Fesa di tacchino arrosto, pomodoro, insalata</div></div><div class="item-price">4,50€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 7</div><div class="item-name">Pomodoro, uovo, tonno, maionese, insalata</div></div><div class="item-price">4,50€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 8</div><div class="item-name">Wurstel, senape</div></div><div class="item-price">4,00€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 9</div><div class="item-name">Prosciutto cotto, capricciosa</div></div><div class="item-price">4,10€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 10</div><div class="item-name">Salame Milano, formaggio tipo caprino</div></div><div class="item-price">4,50€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 11</div><div class="item-name">Coppa, brié</div></div><div class="item-price">4,60€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 12</div><div class="item-name">Pomodoro, verdure grigliate, insalata, maionese</div></div><div class="item-price">4,20€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 13</div><div class="item-name">Peperoni, acciughe, cipolle</div></div><div class="item-price">4,00€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 14</div><div class="item-name">Gamberetti in salsa al rum, insalata</div></div><div class="item-price">6,00€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 15</div><div class="item-name">Pomodori secchi, crema ai funghi porcini, fontal, insalata</div></div><div class="item-price">4,20€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 16</div><div class="item-name">Hamburger alla diavola — senape, ketchup, cipolle, peperoncino</div></div><div class="item-price">5,20€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 17</div><div class="item-name">Hamburger, fontal, ketchup</div></div><div class="item-price">4,80€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 18</div><div class="item-name">Pomodoro, mozzarella, acciughe, origano</div></div><div class="item-price">4,50€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 19</div><div class="item-name">Speck, formaggio tipo caprino</div></div><div class="item-price">4,50€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 20</div><div class="item-name">Wurstel alla diavola — senape, ketchup, cipolle, peperoncino</div></div><div class="item-price">4,50€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 21</div><div class="item-name">Bresaola, pepe, sale, olio, limone</div></div><div class="item-price">5,00€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 22</div><div class="item-name">Gamberetti, insalata, olio, pepe, limone</div></div><div class="item-price">5,80€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 23</div><div class="item-name">Coppa</div></div><div class="item-price">4,10€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 24</div><div class="item-name">Salame Milano</div></div><div class="item-price">4,00€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 25</div><div class="item-name">Prosciutto cotto</div></div><div class="item-price">3,80€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 26</div><div class="item-name">Prosciutto cotto, fontal</div></div><div class="item-price">4,20€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 27</div><div class="item-name">Wurstel, crauti, senape</div></div><div class="item-price">4,50€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 28</div><div class="item-name">Milanese di pollo, pomodoro, maionese, sale, pepe</div></div><div class="item-price">5,20€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 29</div><div class="item-name">Milanese di pollo, pepe, sale, limone, insalata</div></div><div class="item-price">5,20€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 30</div><div class="item-name">Bagnetto, peperoni, acciughe</div></div><div class="item-price">4,00€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 31</div><div class="item-name">Prosciutto crudo, gamberetti in salsa al rum</div></div><div class="item-price">6,50€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 32</div><div class="item-name">Salame ungherese, scamorza affumicata</div></div><div class="item-price">4,70€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 33</div><div class="item-name">Prosciutto cotto, melanzane grigliate, fontal</div></div><div class="item-price">4,50€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 34</div><div class="item-name">Pomodoro, mozzarella, fontal, melanzane grigliate</div></div><div class="item-price">4,50€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 35</div><div class="item-name">Speck, cipolla, patè di olive, insalata</div></div><div class="item-price">4,90€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 36</div><div class="item-name">Speck, formaggio tipo caprino, spinaci</div></div><div class="item-price">4,80€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 37</div><div class="item-name">Salame Milano, asparagi, maionese</div></div><div class="item-price">4,60€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 38</div><div class="item-name">Hamburger, salsa al rum, salsa di asparagi, fontal</div></div><div class="item-price">5,20€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 39</div><div class="item-name">Bresaola, fontal, maionese</div></div><div class="item-price">5,60€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 40</div><div class="item-name">Pomodoro, mozzarella, olio, sale, origano</div></div><div class="item-price">4,00€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 41</div><div class="item-name">Hamburger, spinaci, fontal, senape</div></div><div class="item-price">5,20€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 42</div><div class="item-name">Hamburger, pomodoro, insalata</div></div><div class="item-price">4,80€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 43</div><div class="item-name">Prosciutto cotto, peperoni, formaggio tipo caprino</div></div><div class="item-price">4,70€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 44</div><div class="item-name">Prosciutto cotto, fontal, spinaci, maionese, pepe</div></div><div class="item-price">4,90€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 45</div><div class="item-name">Prosciutto crudo, pomodoro</div></div><div class="item-price">4,50€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 46</div><div class="item-name">Spinaci, formaggio tipo caprino</div></div><div class="item-price">3,80€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 47</div><div class="item-name">Fesa di tacchino arrosto, uovo, maionese</div></div><div class="item-price">4,60€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 48</div><div class="item-name">Wurstel, fontal</div></div><div class="item-price">4,20€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 49</div><div class="item-name">Prosciutto cotto, salsa di asparagi, mozzarella</div></div><div class="item-price">4,60€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 50</div><div class="item-name">Salame ungherese, peperoni, fontal</div></div><div class="item-price">4,90€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 51</div><div class="item-name">Wurstel, capricciosa, insalata</div></div><div class="item-price">4,50€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 52</div><div class="item-name">Prosciutto crudo, capricciosa</div></div><div class="item-price">4,50€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 53</div><div class="item-name">Coppa, vodka, limone, olio, pepe, sale</div></div><div class="item-price">4,50€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 54</div><div class="item-name">Bresaola, vodka, limone, salsa di asparagi, mozzarella, salsa al rum</div></div><div class="item-price">5,90€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 55</div><div class="item-name">Frittata di spinaci, pomodoro, insalata, mozzarella</div></div><div class="item-price">5,10€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 56</div><div class="item-name">Prosciutto cotto, frittata di spinaci, mozzarella, maionese</div></div><div class="item-price">6,00€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 57</div><div class="item-name">Frittata di spinaci, cipolle, fontal, sale, pepe</div></div><div class="item-price">5,10€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 58</div><div class="item-name">Frittata di spinaci, salsa di carciofi, pomodoro, insalata</div></div><div class="item-price">5,10€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 59</div><div class="item-name">Bresaola, salsa di carciofi, crema di formaggi</div></div><div class="item-price">5,60€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 60</div><div class="item-name">Pomodori secchi, cipolle, patè di olive nere, insalata, tonnè, maionese</div></div><div class="item-price">4,10€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 61</div><div class="item-name">Prosciutto cotto, pomodori secchi, crema di formaggi, insalata</div></div><div class="item-price">5,00€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 62</div><div class="item-name">Pomodori secchi, acciughe, patè di olive nere, crema di formaggi, insalata</div></div><div class="item-price">4,70€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 63</div><div class="item-name">Crema di formaggi, tonno, uovo, salsa di carciofi</div></div><div class="item-price">3,90€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 64</div><div class="item-name">Crema di formaggi, salsa di carciofi</div></div><div class="item-price">3,60€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 65</div><div class="item-name">Prosciutto cotto, crema ai formaggi, crema ai funghi porcini, insalata</div></div><div class="item-price">5,00€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 66</div><div class="item-name">Crema di formaggi, gamberetti, pepe</div></div><div class="item-price">6,00€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 67</div><div class="item-name">Nutella, o burro d'arachidi o marmellata</div></div><div class="item-price">3,50€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 68</div><div class="item-name">Fesa di tacchino arrosto, crema ai funghi al tartufo, crema di formaggi</div></div><div class="item-price">5,50€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 69</div><div class="item-name">Wurstel, patatine, maionese</div></div><div class="item-price">4,50€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 70</div><div class="item-name">Hamburger, pesto di pistacchi, crudo croccante, crema ai formaggi</div></div><div class="item-price">6,80€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 71</div><div class="item-name">Wurstel, cipolle, salsa di fuoco, fontal</div></div><div class="item-price">5,00€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 72</div><div class="item-name">Hamburger, salsa di fuoco, scamorza affumicata</div></div><div class="item-price">5,30€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 73</div><div class="item-name">Formaggio tipo caprino, zucchine grigliate</div></div><div class="item-price">3,90€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 74</div><div class="item-name">Coppa, crema di noci, pomodori secchi</div></div><div class="item-price">5,20€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 75</div><div class="item-name">Fesa di tacchino arrosto, pomodoro, zucchine grigliate, mozzarella</div></div><div class="item-price">5,50€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 76</div><div class="item-name">Bresaola, pesto di pistacchi, crema di formaggi</div></div><div class="item-price">5,70€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 77</div><div class="item-name">Gamberetti, crema di funghi al tartufo, maionese</div></div><div class="item-price">6,30€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 78</div><div class="item-name">Speck, salsa alle noci, brié</div></div><div class="item-price">5,50€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 79</div><div class="item-name">Speck, zucchine grigliate, brié</div></div><div class="item-price">5,50€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 80</div><div class="item-name">Pesto di pistacchi, formaggio tipo caprino, melanzane grigliate, pomodoro</div></div><div class="item-price">5,20€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 81</div><div class="item-name">Speck, pomodori secchi, crema di funghi al tartufo</div></div><div class="item-price">5,70€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 82</div><div class="item-name">Fesa di tacchino arrosto, maionese, crema di funghi porcini, pomodoro, brié</div></div><div class="item-price">5,50€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 83</div><div class="item-name">Pomodoro, salsa alle noci, insalata, pesto di pistacchi</div></div><div class="item-price">4,00€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 84</div><div class="item-name">Hamburger, pomodoro, insalata, crema di formaggi, scamorza affumicata</div></div><div class="item-price">5,20€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 85</div><div class="item-name">Melanzane, verdure miste, fontal, maionese, insalata</div></div><div class="item-price">4,60€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 86</div><div class="item-name">Prosciutto cotto, burro di arachidi, pomodoro, sale, pepe, insalata</div></div><div class="item-price">4,80€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 87</div><div class="item-name">Hamburger, formaggio tipo caprino, verdure grigliate, maionese, crudo croccante</div></div><div class="item-price">6,90€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 88</div><div class="item-name">Doppio hamburger, maionese, pomodoro, ketchup, fontal, insalata</div></div><div class="item-price">7,50€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 89</div><div class="item-name">Hamburger, salsa alle noci, scamorza affumicata, speck croccante</div></div><div class="item-price">6,80€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 90</div><div class="item-name">Salame croccante, formaggio pecorino, zucchine, salsa di fuoco</div></div><div class="item-price">5,20€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 91</div><div class="item-name">Hamburger, formaggio pecorino, patè di olive nere, pomodoro, insalata</div></div><div class="item-price">5,30€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 92</div><div class="item-name">Fesa di tacchino arrosto, burro di arachidi, verdure miste, formaggio pecorino</div></div><div class="item-price">5,50€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 93</div><div class="item-name">Fesa di tacchino arrosto, maionese, cipolle, pomodoro, pepe, uovo, senape, fontal, crudo croccante, insalata</div></div><div class="item-price">6,90€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 94</div><div class="item-name">Prosciutto cotto, pesto al sesamo, spinaci</div></div><div class="item-price">5,00€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 95</div><div class="item-name">Salame Milano, bagnetto, acciughe</div></div><div class="item-price">5,00€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 96</div><div class="item-name">Gamberetti, formaggio pecorino, pomodoro, pepe, pesto al sesamo</div></div><div class="item-price">6,60€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 97</div><div class="item-name">Frittata di spinaci, crema di funghi al tartufo, maionese, fontal, pepe</div></div><div class="item-price">5,60€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 98</div><div class="item-name">Coppa, formaggio pecorino, zucchine grigliate, fontal, pesto al sesamo</div></div><div class="item-price">5,60€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 99</div><div class="item-name">Pesto al sesamo, pomodori secchi, acciughe, maionese, origano</div></div><div class="item-price">4,80€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">N° 100</div><div class="item-name">Salame Milano, formaggio pecorino, pesto al sesamo, pomodori secchi, insalata</div></div><div class="item-price">4,90€</div></div>
       </div>
     </div>
 
     <!-- TOAST & FOCACCE -->
-    <div id="tab-toast" class="menu-panel reveal">
-      <div class="toast-grid">
-        <div class="toast-card"><div class="toast-name">Toast Prosciutto cotto, fontal</div><div class="toast-price">2,80€</div></div>
-        <div class="toast-card"><div class="toast-name">Toast Farcito (verdure/peperoni/tartufo)</div><div class="toast-price">3,00€</div></div>
-        <div class="toast-card"><div class="toast-name">Toast Nutella</div><div class="toast-price">1,50€</div></div>
-        <div class="toast-card"><div class="toast-name">Focaccia — P. cotto, pomodoro, mozzarella</div><div class="toast-price">4,60€</div></div>
-        <div class="toast-card"><div class="toast-name">Focaccia — Prosciutto crudo</div><div class="toast-price">4,30€</div></div>
-        <div class="toast-card"><div class="toast-name">Focaccia Felice — Sale, olio, origano</div><div class="toast-price">1,50€</div></div>
-        <div class="toast-card"><div class="toast-name">Focaccia Raffo — Cotoletta pollo, pomodoro, mozzarella</div><div class="toast-price">6,10€</div></div>
-        <div class="toast-card"><div class="toast-name">Pizzetta piccola</div><div class="toast-price">2,00€</div></div>
-        <div class="toast-card"><div class="toast-name">Pizzetta piccola al prosciutto / peperoni</div><div class="toast-price">2,50€</div></div>
-        <div class="toast-card"><div class="toast-name">Pizzetta grande</div><div class="toast-price">4,00€</div></div>
-        <div class="toast-card"><div class="toast-name">Pizzetta grande al prosciutto / peperoni</div><div class="toast-price">4,90€</div></div>
-        <div class="toast-card"><div class="toast-name">Bretzel 🥨</div><div class="toast-price">1,50€</div></div>
+    <div id="tab-toast" class="menu-panel">
+      <div class="items-grid">
+        <div class="item-card"><div class="item-info"><div class="item-num">TOAST</div><div class="item-name">Prosciutto cotto, fontal</div><div class="item-sub">Pane bianco, integrale o 5 cereali</div></div><div class="item-price">2,80€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">TOAST FARCITO</div><div class="item-name">Prosciutto cotto, fontal, verdure miste o peperoni o salsa di carciofi o crema ai funghi al tartufo</div></div><div class="item-price">3,00€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">TOAST</div><div class="item-name">Nutella</div></div><div class="item-price">1,50€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">FOCACCIA 1</div><div class="item-name">Prosciutto cotto, pomodoro, mozzarella, maionese</div></div><div class="item-price">4,60€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">FOCACCIA 2</div><div class="item-name">Prosciutto crudo</div></div><div class="item-price">4,30€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">FOCACCIA FELICE</div><div class="item-name">Sale, olio, origano o rosmarino</div></div><div class="item-price">1,50€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">FOCACCIA RAFFO</div><div class="item-name">Prosciutto cotto, cotoletta di pollo, pomodoro, mozzarella, maionese</div></div><div class="item-price">6,10€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">PIZZETTA</div><div class="item-name">Piccola</div></div><div class="item-price">2,00€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">PIZZETTA</div><div class="item-name">Piccola al prosciutto o ai peperoni</div></div><div class="item-price">2,50€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">PIZZETTA</div><div class="item-name">Grande</div></div><div class="item-price">4,00€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">PIZZETTA</div><div class="item-name">Grande al prosciutto o ai peperoni</div></div><div class="item-price">4,90€</div></div>
+        <div class="item-card"><div class="item-info"><div class="item-num">BRETZEL</div><div class="item-name">🥨 Bretzel</div></div><div class="item-price">1,50€</div></div>
       </div>
     </div>
 
-    <!-- BIRRE IN BOTTIGLIA -->
-    <div id="tab-bottiglia" class="menu-panel reveal">
-      <div class="bottiglia-grid">
-        <div class="bottiglia-card"><div class="bottiglia-info"><div class="b-name">Firestone Walker</div><div class="b-origin">USA · California · 0,355l</div></div><div class="bottiglia-price">6,00€</div></div>
-        <div class="bottiglia-card"><div class="bottiglia-info"><div class="b-name">Kloster Scheyern Weiss/Dunkel</div><div class="b-origin">Germania · 0,50l</div></div><div class="bottiglia-price">5,50€</div></div>
-        <div class="bottiglia-card"><div class="bottiglia-info"><div class="b-name">Radeberger Pilsner</div><div class="b-origin">Germania · 0,50l</div></div><div class="bottiglia-price">5,50€</div></div>
-        <div class="bottiglia-card"><div class="bottiglia-info"><div class="b-name">St. Idesbald Tripel</div><div class="b-origin">Belgio · 0,33l</div></div><div class="bottiglia-price">6,00€</div></div>
-        <div class="bottiglia-card"><div class="bottiglia-info"><div class="b-name">Raffo Grezza</div><div class="b-origin">Italia · 0,33l</div></div><div class="bottiglia-price">3,70€</div></div>
-        <div class="bottiglia-card"><div class="bottiglia-info"><div class="b-name">Ichnusa Non Filtrata</div><div class="b-origin">Italia · Sardegna · 0,33l</div></div><div class="bottiglia-price">3,70€</div></div>
-        <div class="bottiglia-card"><div class="bottiglia-info"><div class="b-name">Messina Cristalli di Sale</div><div class="b-origin">Italia · Sicilia · 0,33l</div></div><div class="bottiglia-price">3,70€</div></div>
-        <div class="bottiglia-card"><div class="bottiglia-info"><div class="b-name">Leffe Rouge</div><div class="b-origin">Belgio · 0,33l</div></div><div class="bottiglia-price">4,00€</div></div>
-        <div class="bottiglia-card"><div class="bottiglia-info"><div class="b-name">Heineken</div><div class="b-origin">Olanda · 0,33l</div></div><div class="bottiglia-price">4,00€</div></div>
-        <div class="bottiglia-card"><div class="bottiglia-info"><div class="b-name">Moretti</div><div class="b-origin">Italia · 0,66l</div></div><div class="bottiglia-price">4,00€</div></div>
-        <div class="bottiglia-card"><div class="bottiglia-info"><div class="b-name">Desperados</div><div class="b-origin">Messico · Tequila Flavoured · 0,33l</div></div><div class="bottiglia-price">4,00€</div></div>
-        <div class="bottiglia-card"><div class="bottiglia-info"><div class="b-name">Daura — Gluten Free 🌾</div><div class="b-origin">Spagna · Damm · 0,33l</div></div><div class="bottiglia-price">4,00€</div></div>
+    <!-- BIRRE IN BOTTIGLIA con badge colorati -->
+    <div id="tab-bottiglia" class="menu-panel">
+      <div class="items-grid">
+        <div class="item-card"><div class="bottle-badge" style="background:linear-gradient(135deg,#5D4037,#3E2723);color:#FFCCBC">FW</div><div class="item-info"><div class="item-name">Firestone Walker</div><div class="item-sub">USA · California · 0,355l</div></div><div class="item-price">6,00€</div></div>
+        <div class="item-card"><div class="bottle-badge" style="background:linear-gradient(135deg,#4E342E,#2C1A0E);color:#D7CCC8">KS</div><div class="item-info"><div class="item-name">Kloster Scheyern Weiss / Dunkel</div><div class="item-sub">Germania · 0,50l</div></div><div class="item-price">5,50€</div></div>
+        <div class="item-card"><div class="bottle-badge" style="background:linear-gradient(135deg,#2E7D32,#1B5E20);color:#fff">RB</div><div class="item-info"><div class="item-name">Radeberger Pilsner</div><div class="item-sub">Germania · 0,50l</div></div><div class="item-price">5,50€</div></div>
+        <div class="item-card"><div class="bottle-badge" style="background:linear-gradient(135deg,#8D6E63,#6D4C41);color:#BCAAA4">SI</div><div class="item-info"><div class="item-name">St. Idesbald Tripel</div><div class="item-sub">Belgio · 0,33l</div></div><div class="item-price">6,00€</div></div>
+        <div class="item-card"><div class="bottle-badge" style="background:linear-gradient(135deg,#D32F2F,#B71C1C);color:#fff">RF</div><div class="item-info"><div class="item-name">Raffo Grezza</div><div class="item-sub">Italia · 0,33l</div></div><div class="item-price">3,70€</div></div>
+        <div class="item-card"><div class="bottle-badge" style="background:linear-gradient(135deg,#1565C0,#003380);color:#E3F2FD">IC</div><div class="item-info"><div class="item-name">Ichnusa Non Filtrata</div><div class="item-sub">Italia · Sardegna · 0,33l</div></div><div class="item-price">3,70€</div></div>
+        <div class="item-card"><div class="bottle-badge" style="background:linear-gradient(135deg,#0D47A1,#1A237E);color:#FFD700">MS</div><div class="item-info"><div class="item-name">Messina Cristalli di Sale</div><div class="item-sub">Italia · Sicilia · 0,33l</div></div><div class="item-price">3,70€</div></div>
+        <div class="item-card"><div class="bottle-badge" style="background:linear-gradient(135deg,#C8840A,#8B5700);color:#FFF9C4">LF</div><div class="item-info"><div class="item-name">Leffe Rouge</div><div class="item-sub">Belgio · 0,33l</div></div><div class="item-price">4,00€</div></div>
+        <div class="item-card"><div class="bottle-badge" style="background:linear-gradient(135deg,#00843D,#005229);color:#fff;font-size:.55rem">HNK</div><div class="item-info"><div class="item-name">Heineken</div><div class="item-sub">Olanda · 0,33l</div></div><div class="item-price">4,00€</div></div>
+        <div class="item-card"><div class="bottle-badge" style="background:linear-gradient(135deg,#C62828,#8E0000);color:#FFD54F">MT</div><div class="item-info"><div class="item-name">Moretti</div><div class="item-sub">Italia · 0,66l</div></div><div class="item-price">4,00€</div></div>
+        <div class="item-card"><div class="bottle-badge" style="background:linear-gradient(135deg,#00695C,#004D40);color:#A5D6A7">DP</div><div class="item-info"><div class="item-name">Desperados</div><div class="item-sub">Messico · Tequila Flavoured · 0,33l</div></div><div class="item-price">4,00€</div></div>
+        <div class="item-card"><div class="bottle-badge" style="background:linear-gradient(135deg,#A1720A,#785100);color:#E3F2FD;font-size:.5rem">DAURA</div><div class="item-info"><div class="item-name">Daura — Gluten Free 🌾</div><div class="item-sub">Spagna · Damm · 0,33l</div></div><div class="item-price">4,00€</div></div>
       </div>
-      <p style="margin-top:1.5rem; font-size:0.83rem; color:#777;">Maggiorazione di €1,00/€3,00 per consumazioni al tavolo e al dehors.</p>
+      <p style="margin-top:1.5rem;font-size:.85rem;color:#666;">Maggiorazione di €1,00 / €3,00 per consumazioni al tavolo e al dehors.</p>
     </div>
 
     <!-- GIN TONIC -->
-    <div id="tab-gin" class="menu-panel reveal">
-      <div class="gin-grid">
-        <div class="gin-card"><div class="gin-name">G'Vine Floraison</div><div class="gin-price">9,00€</div></div>
-        <div class="gin-card"><div class="gin-name">G'Vine Nouaison</div><div class="gin-price">9,00€</div></div>
-        <div class="gin-card"><div class="gin-name">Bombay Sapphire</div><div class="gin-price">9,00€</div></div>
-        <div class="gin-card"><div class="gin-name">Malfy Gin</div><div class="gin-price">9,00€</div></div>
-        <div class="gin-card"><div class="gin-name">Tanqueray London Dry</div><div class="gin-price">9,00€</div></div>
-        <div class="gin-card"><div class="gin-name">Mazzetti London Dry</div><div class="gin-price">9,00€</div></div>
-        <div class="gin-card"><div class="gin-name">Hendrick's</div><div class="gin-price">9,00€</div></div>
-        <div class="gin-card"><div class="gin-name">Gin Mare</div><div class="gin-price">9,00€</div></div>
-        <div class="gin-card"><div class="gin-name">Bulldog</div><div class="gin-price">9,00€</div></div>
-        <div class="gin-card"><div class="gin-name">Monkey 47</div><div class="gin-price">10,00€</div></div>
+    <div id="tab-gin" class="menu-panel">
+      <div class="items-grid">
+        <div class="item-card"><div class="gin-bottle-icon">🍶</div><div class="item-info"><div class="item-name">G'Vine Floraison</div></div><div class="item-price">9,00€</div></div>
+        <div class="item-card"><div class="gin-bottle-icon">🍶</div><div class="item-info"><div class="item-name">G'Vine Nouaison</div></div><div class="item-price">9,00€</div></div>
+        <div class="item-card"><div class="gin-bottle-icon">🍶</div><div class="item-info"><div class="item-name">Bombay Sapphire</div></div><div class="item-price">9,00€</div></div>
+        <div class="item-card"><div class="gin-bottle-icon">🍶</div><div class="item-info"><div class="item-name">Malfy Gin</div></div><div class="item-price">9,00€</div></div>
+        <div class="item-card"><div class="gin-bottle-icon">🍶</div><div class="item-info"><div class="item-name">Tanqueray London Dry</div></div><div class="item-price">9,00€</div></div>
+        <div class="item-card"><div class="gin-bottle-icon">🍶</div><div class="item-info"><div class="item-name">Mazzetti London Dry</div></div><div class="item-price">9,00€</div></div>
+        <div class="item-card"><div class="gin-bottle-icon">🍶</div><div class="item-info"><div class="item-name">Hendrick's</div></div><div class="item-price">9,00€</div></div>
+        <div class="item-card"><div class="gin-bottle-icon">🍶</div><div class="item-info"><div class="item-name">Gin Mare</div></div><div class="item-price">9,00€</div></div>
+        <div class="item-card"><div class="gin-bottle-icon">🍶</div><div class="item-info"><div class="item-name">Bulldog</div></div><div class="item-price">9,00€</div></div>
+        <div class="item-card"><div class="gin-bottle-icon">🍶</div><div class="item-info"><div class="item-name">Monkey 47</div></div><div class="item-price">10,00€</div></div>
       </div>
-      <div class="panini-note" style="margin-top:1.5rem;">
-        Da abbinare: <strong>Kinley alla spina</strong> o <strong>Schweppes in bottiglietta</strong> — due acque toniche "neutre" per esaltare ogni gin. Ogni mese nuovi gin da scoprire!
-      </div>
+      <div class="panini-note" style="margin-top:2rem;">Da abbinare: <strong>Kinley alla spina</strong> o <strong>Schweppes in bottiglietta</strong> — acque toniche selezionate per esaltare ogni gin. Ogni mese nuovi gin da scoprire!</div>
     </div>
   </div>
 </section>
 
 <!-- GALLERY -->
 <section id="gallery">
-  <div class="gallery-intro reveal">
-    <p class="section-label">L'ambiente</p>
-    <h2 class="section-title" style="color:#fff;">Un pub con <span>carattere</span></h2>
-    <div class="section-line" style="margin:0 auto;"></div>
-    <p style="color:var(--text); max-width:560px; margin:0 auto; font-size:1rem;">Legno caldo, bancone storico, scaffali carichi di bottiglie — un'atmosfera autentica che si respira dal primo passo dentro La Voglia.</p>
+  <div class="container" style="text-align:center">
+    <div class="reveal">
+      <p class="section-label">L'ambiente</p>
+      <h2 class="section-title">Un pub con <span>carattere</span></h2>
+      <div class="section-line" style="margin:0 auto"></div>
+      <p style="color:var(--ts);max-width:560px;margin:0 auto;font-size:1.05rem">Legno caldo, bancone storico, scaffali carichi di bottiglie — un'atmosfera autentica che si respira dal primo passo dentro La Voglia.</p>
+    </div>
   </div>
   <div class="gallery-grid reveal">
-    <!-- Grande a sinistra: bancone in legno circolare -->
-    <div class="gallery-img tall">
-      <img src="https://images.unsplash.com/photo-1436076863579-8f0b75f8aa4c?w=800&q=85"
-           alt="Bancone pub in legno classico" loading="lazy" />
-    </div>
-    <!-- Alto destra 1: scaffali liquori retro -->
-    <div class="gallery-img">
-      <img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=600&q=80"
-           alt="Scaffali di bottiglie e liquori" loading="lazy" />
-    </div>
-    <!-- Alto destra 2: birre alla spina -->
-    <div class="gallery-img">
-      <img src="https://images.unsplash.com/photo-1555658636-6e4a36218be7?w=600&q=80"
-           alt="Birre alla spina pub" loading="lazy" />
-    </div>
-    <!-- Basso centro: interno pub britannico con pilastri -->
-    <div class="gallery-img">
-      <img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=700&q=80"
-           alt="Interno pub classico britannico con pilastri" loading="lazy" />
-    </div>
-    <!-- Basso destra: atmosfera serale pub -->
-    <div class="gallery-img">
-      <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80"
-           alt="Atmosfera serale pub" loading="lazy" />
-    </div>
+    <div class="gallery-img tall"><img src="https://images.unsplash.com/photo-1436076863579-8f0b75f8aa4c?w=800&q=85" alt="Bancone" loading="lazy"/></div>
+    <div class="gallery-img"><img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=600&q=80" alt="Scaffali" loading="lazy"/></div>
+    <div class="gallery-img"><img src="https://images.unsplash.com/photo-1555658636-6e4a36218be7?w=600&q=80" alt="Birre" loading="lazy"/></div>
+    <div class="gallery-img wide"><img src="https://images.unsplash.com/photo-1445633629932-0029acc44e88?w=900&q=80" alt="Atmosfera" loading="lazy"/></div>
   </div>
 </section>
 
 <!-- ATMOSFERA -->
 <section id="atmosfera">
   <div class="container">
-    <div class="reveal" style="text-align:center; margin-bottom:3rem;">
+    <div class="reveal" style="text-align:center;margin-bottom:4rem">
       <p class="section-label">L'esperienza</p>
-      <h2 class="section-title">Un'<span>Atmosfera</span> unica</h2>
-      <div class="section-line" style="margin:0 auto;"></div>
+      <h2 class="section-title">Più di un <span>pub</span></h2>
+      <div class="section-line" style="margin:0 auto"></div>
     </div>
     <div class="atm-grid reveal">
-      <div class="atm-card">
-        <div class="atm-icon">🎷</div>
-        <div class="atm-title">Jazz &amp; Funky</div>
-        <div class="atm-desc">Musica in sottofondo selezionata con cura — il ritmo giusto per ogni momento della giornata, senza mai coprire la conversazione.</div>
+      <div class="atm-card"><div class="atm-icon">🎵</div><div class="atm-title">Jazz &amp; Funky</div><div class="atm-desc">La colonna sonora di ogni serata. Musica selezionata per creare la giusta atmosfera — mai troppo alta, sempre presente.</div></div>
+      <div class="atm-card"><div class="atm-icon">🥖</div><div class="atm-title">100 Panini</div><div class="atm-desc">Cento variazioni su un tema. Ingredienti freschi, combinazioni sorprendenti. Ogni numero racconta una storia dal 1989.</div></div>
+      <div class="atm-card"><div class="atm-icon">🍺</div><div class="atm-title">Birre del Mondo</div><div class="atm-desc">Dalla ceca alla belga, dall'inglese all'italiana artigianale. Alla spina, in bottiglia, a rotazione mensile.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRIPADVISOR -->
+<section id="tripadvisor">
+  <div class="container">
+    <div class="ta-wrap reveal">
+      <div class="ta-badge-pill">
+        <svg class="ta-owl-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="24" r="24" fill="rgba(52,224,161,0.1)"/>
+          <ellipse cx="24" cy="30" rx="11" ry="12" fill="#34e0a1"/>
+          <ellipse cx="24" cy="18" rx="9" ry="8" fill="#34e0a1"/>
+          <circle cx="19.5" cy="18" r="4.5" fill="#152218"/><circle cx="19.5" cy="18" r="2.8" fill="white"/><circle cx="19.5" cy="18" r="1.4" fill="#152218"/>
+          <circle cx="28.5" cy="18" r="4.5" fill="#152218"/><circle cx="28.5" cy="18" r="2.8" fill="white"/><circle cx="28.5" cy="18" r="1.4" fill="#152218"/>
+          <polygon points="24,21 22,24 26,24" fill="#8c6023"/>
+          <polygon points="17,11 14,5 20,10" fill="#34e0a1"/><polygon points="31,11 34,5 28,10" fill="#34e0a1"/>
+        </svg>
+        <span class="ta-badge-label">La Voglia su TripAdvisor</span>
       </div>
-      <div class="atm-card">
-        <div class="atm-icon">🌞</div>
-        <div class="atm-title">Pranzo &amp; Sera</div>
-        <div class="atm-desc">Un punto di riferimento per gli studenti e i lavoratori a pranzo. La sera, il posto ideale per rilassarsi con una buona birra in compagnia.</div>
+      <div class="ta-stars"><div class="ta-star"></div><div class="ta-star"></div><div class="ta-star"></div><div class="ta-star"></div><div class="ta-star half"></div></div>
+      <h2 class="ta-h2">Cosa dicono<br><em>di noi</em></h2>
+      <p class="ta-sub">Trentacinque anni di ospitalità, panini e birre parlano da soli. Scopri le esperienze della nostra comunità su TripAdvisor — e se sei già stato da noi, il tuo contributo vale tantissimo.</p>
+      <div class="ta-ctas">
+        <a href="https://www.tripadvisor.it/Restaurant_Review-g1175110-d3924329-Reviews-Bar_La_Voglia-Vercelli_Province_of_Vercelli_Piedmont.html" target="_blank" rel="noopener" class="ta-btn-go">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+          Leggi le Recensioni
+        </a>
+        <a href="https://www.tripadvisor.it/Restaurant_Review-g1175110-d3924329-Reviews-Bar_La_Voglia-Vercelli_Province_of_Vercelli_Piedmont.html" target="_blank" rel="noopener" class="ta-btn-write">✍️&nbsp; Lascia la tua Recensione</a>
       </div>
-      <div class="atm-card">
-        <div class="atm-icon">🏛️</div>
-        <div class="atm-title">Storia Vercellese</div>
-        <div class="atm-desc">Dal 1989 parte della storia di Vercelli. Anna, Fabio ed Elena vi accolgono come di casa, con la cura che solo l'esperienza può dare.</div>
+      <div class="ta-sep"></div>
+      <div style="text-align:center;margin-bottom:3rem">
+        <p class="section-label" style="color:var(--ta)">Perché ci tieni davvero</p>
+        <h3 style="font-family:var(--fd);font-size:2rem;color:#fff;font-weight:900">La tua voce conta</h3>
+      </div>
+      <div class="ta-why-grid reveal">
+        <div class="ta-why-card"><span class="ta-why-icon">🗺️</span><div class="ta-why-title">Aiuta i viaggiatori</div><div class="ta-why-text">Chi arriva a Vercelli per la prima volta usa TripAdvisor per scegliere dove mangiare. La tua recensione li porta da noi.</div></div>
+        <div class="ta-why-card"><span class="ta-why-icon">❤️</span><div class="ta-why-title">Supporta un locale storico</div><div class="ta-why-text">Dal 1989 portiamo avanti una tradizione autentica. Ogni recensione ci aiuta a continuare questa storia.</div></div>
+        <div class="ta-why-card"><span class="ta-why-icon">⭐</span><div class="ta-why-title">Ci sprona a fare meglio</div><div class="ta-why-text">Leggiamo ogni opinione. Il tuo feedback ci aiuta a migliorare ogni panino, ogni birra, ogni serata da La Voglia.</div></div>
       </div>
     </div>
   </div>
@@ -734,52 +782,28 @@
 <!-- CONTATTI -->
 <section id="contatti">
   <div class="container">
-    <div class="reveal">
-      <p class="section-label">Vieni a trovarci</p>
-      <h2 class="section-title">Dove <span>Siamo</span></h2>
+    <div class="reveal" style="margin-bottom:4rem">
+      <p class="section-label">Dove siamo</p>
+      <h2 class="section-title">Vieni a <span>trovarci</span></h2>
       <div class="section-line"></div>
     </div>
     <div class="contatti-grid reveal">
       <div class="contatti-info">
         <h3>La Voglia — Pub Birreria</h3>
-        <div class="info-row">
-          <div class="info-icon">📍</div>
-          <div>
-            <div class="info-label">Indirizzo</div>
-            <div class="info-value">Vercelli, Piemonte</div>
-          </div>
-        </div>
-        <div class="info-row">
-          <div class="info-icon">🕐</div>
-          <div>
-            <div class="info-label">Orari</div>
-            <div class="info-value">Consulta Google per gli orari aggiornati</div>
-          </div>
-        </div>
-        <div class="info-row">
-          <div class="info-icon">🌾</div>
-          <div>
-            <div class="info-label">Opzioni Dietetiche</div>
-            <div class="info-value">Panini senza glutine disponibili (+€1,50)<br>Birra gluten free: Daura Damm</div>
-          </div>
-        </div>
-        <div class="info-row">
-          <div class="info-icon">📅</div>
-          <div>
-            <div class="info-label">Prenotazione Pranzo</div>
-            <div class="info-value">Consigliata — via messaggio WhatsApp</div>
-          </div>
-        </div>
+        <div class="info-row"><div class="info-icon">📍</div><div><div class="info-label">Indirizzo</div><div class="info-value">Via Lagrange Luigi, 28<br>13100 Vercelli (VC)</div></div></div>
+        <div class="info-row"><div class="info-icon">🕐</div><div><div class="info-label">Orari di apertura</div><div class="info-value"><table class="orari-table"><tr><td>Lunedì</td><td>10:30–15:00 · 18:00–02:00</td></tr><tr><td>Martedì</td><td>10:30–15:00 · 18:00–02:00</td></tr><tr><td>Mercoledì</td><td>10:30–15:00 · 18:00–02:00</td></tr><tr><td>Giovedì</td><td>10:30–15:00 · 18:00–02:00</td></tr><tr><td>Venerdì</td><td>10:30–15:00 · 18:00–02:00</td></tr><tr><td>Sabato</td><td>10:30–15:00 · 18:00–<strong>03:00</strong></td></tr><tr class="closed"><td>Domenica</td><td>Chiuso</td></tr></table></div></div></div>
+        <div class="info-row"><div class="info-icon">📞</div><div><div class="info-label">Telefono</div><div class="info-value"><a href="tel:+390161214073">0161 214073</a></div></div></div>
+        <div class="info-row"><div class="info-icon">🌾</div><div><div class="info-label">Opzioni Dietetiche</div><div class="info-value">Panini senza glutine (+€1,50) · Birra gluten free: Daura Damm</div></div></div>
+        <a href="https://www.tripadvisor.it/Restaurant_Review-g1175110-d3924329-Reviews-Bar_La_Voglia-Vercelli_Province_of_Vercelli_Piedmont.html" target="_blank" rel="noopener" class="ta-contatti-link">★ Trovaci e recensiscici su TripAdvisor</a>
       </div>
-
       <div class="prenotazione-box">
         <h3>Prenota il tuo tavolo</h3>
-        <p>Per il servizio pranzo la prenotazione è consigliata. Scrivici un messaggio e ti confermiamo la disponibilità.</p>
-        <a href="https://wa.me/" class="whatsapp-btn">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-          Scrivici su WhatsApp
+        <p>Per il servizio pranzo la prenotazione è consigliata. Chiamaci e ti confermiamo subito la disponibilità.</p>
+        <a href="tel:+390161214073" class="phone-btn">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          Chiama: 0161 214073
         </a>
-        <p style="margin-top:1.5rem; font-size:0.82rem; color:#888;">Per panini non in lista o modifiche agli ingredienti, chiedere il prezzo preventivo.</p>
+        <p style="margin-top:1rem;font-size:.82rem;color:#666">Per panini non in lista o modifiche chiedere il prezzo preventivo al momento dell'ordine.</p>
       </div>
     </div>
   </div>
@@ -787,26 +811,156 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">La Voglia</div>
-  <div class="footer-sub">Pub · Birreria · Bar — Vercelli · Est. 1989</div>
-  <div class="footer-copy">© 2025 La Voglia — Anna, Fabio &amp; Elena</div>
+  <img src="logo-footer.png" alt="La Voglia" class="footer-logo-img"/>
+  <div class="footer-sub">Pub · Birreria · Bar — Via Lagrange 28, Vercelli · Est. 1989</div>
+  <a href="https://www.tripadvisor.it/Restaurant_Review-g1175110-d3924329-Reviews-Bar_La_Voglia-Vercelli_Province_of_Vercelli_Piedmont.html" target="_blank" rel="noopener" class="footer-ta">★ Trovaci su TripAdvisor</a>
+  <div class="footer-copy">© 2026 La Voglia — Anna, Fabio &amp; Elena</div>
 </footer>
 
+<!-- BACK TO TOP -->
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Torna su">↑</button>
+
 <script>
-  // Tab switching
-  function showTab(name, btn) {
-    document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
-    document.getElementById('tab-' + name).classList.add('active');
-    btn.classList.add('active');
+  /* ── PRELOADER ── */
+  window.addEventListener('load',()=>{
+    setTimeout(()=>document.getElementById('preloader').classList.add('loaded'),350);
+  });
+
+  /* ── ACCORDION BUILDER ── */
+  function buildAccordion(){
+    const container=document.getElementById('panini-grid');
+    if(!container)return;
+    const cards=[...container.querySelectorAll('.item-card')];
+    const groups=[
+      {label:'🥖 I Classici',range:'N° 1 – 25',from:1,to:25},
+      {label:'🍖 I Tradizionali',range:'N° 26 – 50',from:26,to:50},
+      {label:'✨ I Gourmet',range:'N° 51 – 75',from:51,to:75},
+      {label:'🏆 I Protagonisti',range:'N° 76 – 100',from:76,to:100}
+    ];
+    container.innerHTML='';
+    groups.forEach((g,gi)=>{
+      const groupCards=cards.filter(c=>{
+        const n=parseInt((c.querySelector('.item-num')?.textContent||'').replace(/\D/g,''));
+        return n>=g.from&&n<=g.to;
+      });
+      const isFirst=gi===0;
+      const el=document.createElement('div');
+      el.className='accordion-group';
+      el.dataset.group=gi;
+      el.innerHTML=`
+        <button class="accordion-header${isFirst?' open':''}" onclick="toggleAccordion(${gi})">
+          <span class="acc-label">${g.label}&nbsp;<span class="acc-range">${g.range}</span></span>
+          <span class="acc-meta">
+            <span class="acc-count" id="acc-count-${gi}">${groupCards.length} panini</span>
+            <span class="acc-chevron">▾</span>
+          </span>
+        </button>
+        <div class="accordion-body${isFirst?' open':''}" id="acc-body-${gi}">
+          <div class="acc-grid items-grid"></div>
+        </div>`;
+      container.appendChild(el);
+      const inner=el.querySelector('.acc-grid');
+      groupCards.forEach(c=>inner.appendChild(c));
+    });
   }
 
-  // Scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-  }, { threshold: 0.1 });
-  revealEls.forEach(el => observer.observe(el));
+  /* ── ACCORDION TOGGLE ── */
+  function toggleAccordion(gi){
+    const hdr=document.querySelector(`.accordion-group[data-group="${gi}"] .accordion-header`);
+    const body=document.getElementById(`acc-body-${gi}`);
+    if(!hdr||!body)return;
+    const open=body.classList.contains('open');
+    hdr.classList.toggle('open',!open);
+    body.classList.toggle('open',!open);
+  }
+
+  /* ── MENU TABS ── */
+  function showTab(name,btn){
+    document.querySelectorAll('.menu-panel').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.menu-tab').forEach(t=>t.classList.remove('active'));
+    document.getElementById('tab-'+name).classList.add('active');
+    btn.classList.add('active');
+    if(name==='panini'){
+      const s=document.getElementById('panini-search');
+      if(s&&s.value){s.value='';filterPanini('');}
+    }
+  }
+
+  /* ── PANINI SEARCH (accordion-aware) ── */
+  function filterPanini(q){
+    const query=q.toLowerCase().trim();
+    let total=0;
+    document.querySelectorAll('.accordion-group').forEach(group=>{
+      const gi=group.dataset.group;
+      const cards=group.querySelectorAll('.item-card');
+      const hdr=group.querySelector('.accordion-header');
+      const body=document.getElementById(`acc-body-${gi}`);
+      const countEl=document.getElementById(`acc-count-${gi}`);
+      let vis=0;
+      cards.forEach(c=>{
+        const txt=(c.querySelector('.item-name')?.textContent||'').toLowerCase();
+        const num=(c.querySelector('.item-num')?.textContent||'').toLowerCase();
+        const show=!query||txt.includes(query)||num.includes(query);
+        c.classList.toggle('hidden',!show);
+        if(show)vis++;
+      });
+      total+=vis;
+      if(query){
+        const hasMatch=vis>0;
+        hdr.classList.toggle('open',hasMatch);
+        body.classList.toggle('open',hasMatch);
+        if(countEl){
+          countEl.textContent=vis+' / '+cards.length;
+          countEl.classList.toggle('filtered',hasMatch&&vis<cards.length);
+        }
+      }else{
+        const isFirst=gi==='0';
+        hdr.classList.toggle('open',isFirst);
+        body.classList.toggle('open',isFirst);
+        if(countEl){countEl.textContent=cards.length+' panini';countEl.classList.remove('filtered');}
+      }
+    });
+    const ctr=document.getElementById('panini-count');
+    if(ctr)ctr.textContent=total||'0';
+  }
+
+  /* ── SCROLL REVEAL ── */
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+  },{threshold:.07,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  /* ── SCROLL EVENTS ── */
+  const mainNav=document.getElementById('main-nav');
+  const progressBar=document.getElementById('progress-bar');
+  const backTop=document.getElementById('back-top');
+  window.addEventListener('scroll',()=>{
+    const y=window.scrollY;
+    const max=document.documentElement.scrollHeight-window.innerHeight;
+    if(progressBar)progressBar.style.width=(max>0?y/max*100:0)+'%';
+    if(mainNav){
+      mainNav.style.height=y>80?'56px':'72px';
+      mainNav.style.background=y>80?'rgba(8,16,10,.97)':'rgba(18,31,21,.93)';
+    }
+    if(backTop)backTop.classList.toggle('visible',y>450);
+  },{passive:true});
+
+  /* ── MOBILE NAV ── */
+  function toggleMobileNav(){
+    const links=document.querySelector('.nav-links');
+    const burger=document.querySelector('.hamburger');
+    links.classList.toggle('mobile-open');
+    burger.classList.toggle('open');
+  }
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.addEventListener('click',()=>{
+      document.querySelector('.nav-links').classList.remove('mobile-open');
+      document.querySelector('.hamburger').classList.remove('open');
+    });
+  });
+
+  /* ── INIT ── */
+  document.addEventListener('DOMContentLoaded',buildAccordion);
 </script>
 </body>
 </html>
