@@ -28,6 +28,24 @@ const TABS: { id: TabId; label: string }[] = [
   { id: 'gin', label: '🍸 Gin Tonic' },
 ];
 
+/**
+ * Filtri rapidi per i panini: solo corrispondenze POSITIVE per parola chiave
+ * (sicuro: non dichiara mai "vegetariano" per assenza di ingredienti).
+ */
+interface PaniniFilter {
+  id: string;
+  label: string;
+  match: (name: string) => boolean;
+}
+const PANINI_FILTERS: PaniniFilter[] = [
+  { id: 'all', label: 'Tutti', match: () => true },
+  { id: 'hamburger', label: '🍔 Hamburger', match: (n) => /hamburger/.test(n) },
+  { id: 'wurstel', label: '🌭 Wurstel', match: (n) => /wurstel/.test(n) },
+  { id: 'pesce', label: '🦐 Pesce', match: (n) => /gamber|acciugh|tonno|salmon/.test(n) },
+  { id: 'piccante', label: '🔥 Piccanti', match: (n) => /diavola|peperoncino|salsa di fuoco/.test(n) },
+  { id: 'dolce', label: '🍫 Dolci', match: (n) => /nutella|marmellata|arachidi/.test(n) },
+];
+
 export default function Menu({ initial }: Props) {
   const data = useLive<MenuIslandData>(initial, async () => {
     const m = await loadMenu();
@@ -36,14 +54,18 @@ export default function Menu({ initial }: Props) {
 
   const [tab, setTab] = useState<TabId>('panini');
   const [query, setQuery] = useState('');
+  const [filterId, setFilterId] = useState('all');
 
   const filteredPanini = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return data.panini;
-    return data.panini.filter(
-      (p) => p.name.toLowerCase().includes(q) || String(p.number).includes(q),
-    );
-  }, [data.panini, query]);
+    const active = PANINI_FILTERS.find((f) => f.id === filterId);
+    const matchFilter = active ? active.match : () => true;
+    return data.panini.filter((p) => {
+      const name = p.name.toLowerCase();
+      const okQuery = !q || name.includes(q) || String(p.number).includes(q);
+      return matchFilter(name) && okQuery;
+    });
+  }, [data.panini, query, filterId]);
 
   return (
     <>
@@ -80,16 +102,32 @@ export default function Menu({ initial }: Props) {
             Mostrati: <span>{filteredPanini.length}</span> / {data.panini.length}
           </div>
         </div>
-        <div className="items-grid">
-          {filteredPanini.map((p) => (
-            <div className="item-card" key={p.id}>
-              <div className="item-info">
-                <div className="item-num">N° {p.number}</div>
-                <div className="item-name">{p.name}</div>
-              </div>
-              <div className="item-price">{p.price}</div>
-            </div>
+
+        <div className="panini-filters" role="group" aria-label="Filtri rapidi panini">
+          {PANINI_FILTERS.map((f) => (
+            <button
+              key={f.id}
+              type="button"
+              className={`panini-chip${filterId === f.id ? ' active' : ''}`}
+              onClick={() => setFilterId(f.id)}
+            >
+              {f.label}
+            </button>
           ))}
+        </div>
+
+        <div className="panini-grid">
+          {filteredPanini.length === 0 ? (
+            <p className="panini-empty">Nessun panino trovato. Prova a cambiare filtro o ricerca.</p>
+          ) : (
+            filteredPanini.map((p) => (
+              <div className="panino-card" key={p.id}>
+                <span className="panino-num">{p.number}</span>
+                <span className="panino-name">{p.name}</span>
+                <span className="panino-price">{p.price}</span>
+              </div>
+            ))
+          )}
         </div>
       </div>
 

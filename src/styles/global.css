@@ -127,6 +127,19 @@ section{padding:8rem 2rem;position:relative}
 .item-sub{color:var(--ts);font-size:.78rem;letter-spacing:.08em;margin-top:.3rem;text-transform:uppercase}
 .item-price{font-family:var(--fd);font-size:1.2rem;color:var(--go);white-space:nowrap;font-weight:900;flex-shrink:0}
 
+/* PANINI — filtri rapidi + card con numero in cerchio */
+.panini-filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.8rem}
+.panini-chip{background:var(--gb);border:1px solid var(--gbr);color:var(--tm);border-radius:22px;padding:.45rem 1rem;font-size:.8rem;font-weight:700;cursor:pointer;font-family:var(--fb);transition:all .2s;letter-spacing:.02em;white-space:nowrap}
+.panini-chip:hover{border-color:var(--gg);color:var(--go)}
+.panini-chip.active{background:linear-gradient(135deg,var(--go),var(--gg));color:var(--gd);border-color:transparent;box-shadow:0 4px 12px rgba(220,179,86,.25)}
+.panini-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:.9rem}
+.panino-card{display:flex;align-items:center;gap:1rem;background:var(--gb);border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:.9rem 1.1rem;transition:all .25s}
+.panino-card:hover{background:rgba(44,74,52,.4);border-color:var(--gbr);transform:translateX(4px)}
+.panino-num{flex-shrink:0;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:900;font-size:1.05rem;color:var(--gd);background:linear-gradient(135deg,var(--go),var(--gg));box-shadow:0 3px 10px rgba(220,179,86,.3)}
+.panino-name{flex:1;min-width:0;color:#fff;font-size:1rem;font-weight:700;line-height:1.4}
+.panino-price{flex-shrink:0;font-family:var(--fd);font-size:1.2rem;color:var(--go);font-weight:900;white-space:nowrap}
+.panini-empty{grid-column:1/-1;color:var(--ts);padding:2.5rem 0;text-align:center;font-size:1rem}
+
 /* bottiglia badge */
 .bottle-badge{width:48px;height:48px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;align-self:center;font-size:.62rem;font-weight:900;letter-spacing:.05em;text-transform:uppercase;line-height:1.2;text-align:center;border:1px solid rgba(255,255,255,.15)}
 
@@ -289,6 +302,15 @@ footer{background:#040908;border-top:1px solid rgba(52,224,161,.08);text-align:c
   .item-name{font-size:.95rem;line-height:1.35}
   .item-sub{font-size:.72rem}
   .item-price{font-size:1.2rem}
+
+  /* panini: colonna singola, numero e prezzo ben leggibili */
+  .panini-grid{grid-template-columns:1fr;gap:.6rem}
+  .panino-card{padding:.75rem .85rem;gap:.8rem}
+  .panino-num{width:38px;height:38px;font-size:.98rem}
+  .panino-name{font-size:.95rem;line-height:1.35}
+  .panino-price{font-size:1.15rem}
+  .panini-chip{font-size:.78rem;padding:.4rem .8rem}
+  .panini-filters{gap:.4rem;margin-bottom:1.2rem}
 
   /* nota e titoli piu' misurati */
   .panini-note{padding:1.1rem 1.2rem;font-size:.92rem}
