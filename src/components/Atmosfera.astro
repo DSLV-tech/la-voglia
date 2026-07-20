@@ -1,0 +1,25 @@
+---
+const cards = [
+  { icon: '🎵', title: 'Jazz & Funky', desc: 'La colonna sonora di ogni serata. Musica selezionata per creare la giusta atmosfera — mai troppo alta, sempre presente.' },
+  { icon: '🥖', title: '100 Panini', desc: 'Cento variazioni su un tema. Ingredienti freschi, combinazioni sorprendenti. Ogni numero racconta una storia dal 1989.' },
+  { icon: '🍺', title: 'Birre del Mondo', desc: 'Dalla ceca alla belga, dall\'inglese all\'italiana artigianale. Alla spina, in bottiglia, a rotazione mensile.' },
+];
+---
+<section id="atmosfera">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:4rem">
+      <p class="section-label">L'esperienza</p>
+      <h2 class="section-title">Più di un <span>pub</span></h2>
+      <div class="section-line" style="margin:0 auto"></div>
+    </div>
+    <div class="atm-grid reveal">
+      {cards.map((c) => (
+        <div class="atm-card">
+          <div class="atm-icon">{c.icon}</div>
+          <div class="atm-title">{c.title}</div>
+          <div class="atm-desc">{c.desc}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

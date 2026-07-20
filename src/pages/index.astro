@@ -1,0 +1,63 @@
+---
+import Base from '@/layouts/Base.astro';
+import Preloader from '@/components/Preloader.astro';
+import Nav from '@/components/Nav.astro';
+import Hero from '@/components/Hero.astro';
+import Storia from '@/components/Storia.astro';
+import Gallery from '@/components/Gallery.astro';
+import Atmosfera from '@/components/Atmosfera.astro';
+import TripAdvisor from '@/components/TripAdvisor.astro';
+import Contatti from '@/components/Contatti.astro';
+import Footer from '@/components/Footer.astro';
+import BirreSpina from '@/components/react/BirreSpina.tsx';
+import Menu from '@/components/react/Menu.tsx';
+import { loadMenu } from '@/lib/menu-repository';
+
+// Dati caricati a build-time (o fallback): renderizzati nell'HTML per SEO.
+const menu = await loadMenu();
+---
+
+<Base>
+  <Preloader />
+  <Nav />
+  <Hero />
+  <Storia />
+
+  <!-- BIRRE ALLA SPINA -->
+  <section id="birre">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">La nostra selezione</p>
+        <h2 class="section-title">Birre alla <span>Spina</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <BirreSpina client:load initial={menu.tapBeers} />
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Cosa mangiamo</p>
+        <h2 class="section-title">Il nostro <span>Menu</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <Menu
+        client:load
+        initial={{
+          panini: menu.panini,
+          focacce: menu.focacce,
+          bottleBeers: menu.bottleBeers,
+          gins: menu.gins,
+        }}
+      />
+    </div>
+  </section>
+
+  <Gallery />
+  <Atmosfera />
+  <TripAdvisor />
+  <Contatti />
+  <Footer />
+</Base>

@@ -1,0 +1,51 @@
+---
+const TRIPADVISOR =
+  'https://www.tripadvisor.it/Restaurant_Review-g1175110-d3924329-Reviews-Bar_La_Voglia-Vercelli_Province_of_Vercelli_Piedmont.html';
+const why = [
+  { icon: '🗺️', title: 'Aiuta i viaggiatori', text: 'Chi arriva a Vercelli per la prima volta usa TripAdvisor per scegliere dove mangiare. La tua recensione li porta da noi.' },
+  { icon: '❤️', title: 'Supporta un locale storico', text: 'Dal 1989 portiamo avanti una tradizione autentica. Ogni recensione ci aiuta a continuare questa storia.' },
+  { icon: '⭐', title: 'Ci sprona a fare meglio', text: 'Leggiamo ogni opinione. Il tuo feedback ci aiuta a migliorare ogni panino, ogni birra, ogni serata da La Voglia.' },
+];
+---
+<section id="tripadvisor">
+  <div class="container">
+    <div class="ta-wrap reveal">
+      <div class="ta-badge-pill">
+        <svg class="ta-owl-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="24" r="24" fill="rgba(52,224,161,0.1)"></circle>
+          <ellipse cx="24" cy="30" rx="11" ry="12" fill="#34e0a1"></ellipse>
+          <ellipse cx="24" cy="18" rx="9" ry="8" fill="#34e0a1"></ellipse>
+          <circle cx="19.5" cy="18" r="4.5" fill="#152218"></circle><circle cx="19.5" cy="18" r="2.8" fill="white"></circle><circle cx="19.5" cy="18" r="1.4" fill="#152218"></circle>
+          <circle cx="28.5" cy="18" r="4.5" fill="#152218"></circle><circle cx="28.5" cy="18" r="2.8" fill="white"></circle><circle cx="28.5" cy="18" r="1.4" fill="#152218"></circle>
+          <polygon points="24,21 22,24 26,24" fill="#8c6023"></polygon>
+          <polygon points="17,11 14,5 20,10" fill="#34e0a1"></polygon><polygon points="31,11 34,5 28,10" fill="#34e0a1"></polygon>
+        </svg>
+        <span class="ta-badge-label">La Voglia su TripAdvisor</span>
+      </div>
+      <div class="ta-stars"><div class="ta-star"></div><div class="ta-star"></div><div class="ta-star"></div><div class="ta-star"></div><div class="ta-star half"></div></div>
+      <h2 class="ta-h2">Cosa dicono<br /><em>di noi</em></h2>
+      <p class="ta-sub">Trentacinque anni di ospitalità, panini e birre parlano da soli. Scopri le esperienze della nostra comunità su TripAdvisor — e se sei già stato da noi, il tuo contributo vale tantissimo.</p>
+      <div class="ta-ctas">
+        <a href={TRIPADVISOR} target="_blank" rel="noopener" class="ta-btn-go">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"></path></svg>
+          Leggi le Recensioni
+        </a>
+        <a href={TRIPADVISOR} target="_blank" rel="noopener" class="ta-btn-write">✍️&nbsp; Lascia la tua Recensione</a>
+      </div>
+      <div class="ta-sep"></div>
+      <div style="text-align:center;margin-bottom:3rem">
+        <p class="section-label" style="color:var(--ta)">Perché ci tieni davvero</p>
+        <h3 style="font-family:var(--fd);font-size:2rem;color:#fff;font-weight:900">La tua voce conta</h3>
+      </div>
+      <div class="ta-why-grid reveal">
+        {why.map((w) => (
+          <div class="ta-why-card">
+            <span class="ta-why-icon">{w.icon}</span>
+            <div class="ta-why-title">{w.title}</div>
+            <div class="ta-why-text">{w.text}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,69 @@
+---
+const TRIPADVISOR =
+  'https://www.tripadvisor.it/Restaurant_Review-g1175110-d3924329-Reviews-Bar_La_Voglia-Vercelli_Province_of_Vercelli_Piedmont.html';
+const orari = [
+  { g: 'Lunedì', h: '10:30–15:00 · 18:00–02:00' },
+  { g: 'Martedì', h: '10:30–15:00 · 18:00–02:00' },
+  { g: 'Mercoledì', h: '10:30–15:00 · 18:00–02:00' },
+  { g: 'Giovedì', h: '10:30–15:00 · 18:00–02:00' },
+  { g: 'Venerdì', h: '10:30–15:00 · 18:00–02:00' },
+];
+---
+<section id="contatti">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:4rem">
+      <p class="section-label">Dove siamo</p>
+      <h2 class="section-title">Vieni a <span>trovarci</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="contatti-grid reveal">
+      <div class="contatti-info">
+        <h3>La Voglia — Pub Birreria</h3>
+        <div class="info-row">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-label">Indirizzo</div>
+            <div class="info-value">Via Lagrange Luigi, 28<br />13100 Vercelli (VC)</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">🕐</div>
+          <div>
+            <div class="info-label">Orari di apertura</div>
+            <div class="info-value">
+              <table class="orari-table">
+                {orari.map((o) => (<tr><td>{o.g}</td><td>{o.h}</td></tr>))}
+                <tr><td>Sabato</td><td>10:30–15:00 · 18:00–<strong>03:00</strong></td></tr>
+                <tr class="closed"><td>Domenica</td><td>Chiuso</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📞</div>
+          <div>
+            <div class="info-label">Telefono</div>
+            <div class="info-value"><a href="tel:+390161214073">0161 214073</a></div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">🌾</div>
+          <div>
+            <div class="info-label">Opzioni Dietetiche</div>
+            <div class="info-value">Panini senza glutine (+€1,50) · Birra gluten free: Daura Damm</div>
+          </div>
+        </div>
+        <a href={TRIPADVISOR} target="_blank" rel="noopener" class="ta-contatti-link">★ Trovaci e recensiscici su TripAdvisor</a>
+      </div>
+      <div class="prenotazione-box">
+        <h3>Prenota il tuo tavolo</h3>
+        <p>Per il servizio pranzo la prenotazione è consigliata. Chiamaci e ti confermiamo subito la disponibilità.</p>
+        <a href="tel:+390161214073" class="phone-btn">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"></path></svg>
+          Chiama: 0161 214073
+        </a>
+        <p style="margin-top:1rem;font-size:.82rem;color:#666">Per panini non in lista o modifiche chiedere il prezzo preventivo al momento dell'ordine.</p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,8 @@
+---
+import Base from '@/layouts/Base.astro';
+import '@/styles/admin.css';
+import AdminApp from '@/components/react/admin/AdminApp.tsx';
+---
+<Base title="Admin · La Voglia" description="Pannello di gestione del menu di La Voglia.">
+  <AdminApp client:only="react" />
+</Base>

@@ -1,0 +1,78 @@
+---
+/**
+ * Layout base condiviso da tutte le pagine.
+ * Include font, CSS globale e gli "effetti" del sito originale.
+ */
+import '@/styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'La Voglia – Pub Birreria | Vercelli dal 1989',
+  description = 'La Voglia, pub birreria storico di Vercelli dal 1989. 100 panini numerati, birre alla spina selezionate, gin tonic. Via Lagrange 28, Vercelli. Eccellente su TripAdvisor.',
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      /* ── Effetti del sito (preloader, reveal, progress, back-to-top, nav mobile) ── */
+      // Preloader: nasconde dopo il caricamento.
+      const hidePreloader = () => {
+        const p = document.getElementById('preloader');
+        if (p) window.setTimeout(() => p.classList.add('loaded'), 600);
+      };
+      if (document.readyState === 'complete') hidePreloader();
+      else window.addEventListener('load', hidePreloader);
+
+      // Reveal on scroll.
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting) {
+              e.target.classList.add('visible');
+              io.unobserve(e.target);
+            }
+          }
+        },
+        { threshold: 0.12 },
+      );
+      const observeReveals = () =>
+        document.querySelectorAll('.reveal:not(.visible)').forEach((el) => io.observe(el));
+      observeReveals();
+      // Ri-osserva quando le island React idratano contenuti nuovi.
+      document.addEventListener('astro:page-load', observeReveals);
+      window.setTimeout(observeReveals, 1200);
+
+      // Barra di avanzamento nel nav + back-to-top.
+      const bar = document.getElementById('progress-bar');
+      const backTop = document.getElementById('back-top');
+      const onScroll = () => {
+        const h = document.documentElement;
+        const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight || 1);
+        if (bar) bar.style.width = `${Math.min(scrolled * 100, 100)}%`;
+        if (backTop) backTop.classList.toggle('visible', h.scrollTop > 400);
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    </script>
+  </body>
+</html>

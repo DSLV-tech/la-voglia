@@ -1,0 +1,35 @@
+---
+import { asset } from '@/lib/asset';
+const TRIPADVISOR =
+  'https://www.tripadvisor.it/Restaurant_Review-g1175110-d3924329-Reviews-Bar_La_Voglia-Vercelli_Province_of_Vercelli_Piedmont.html';
+---
+<nav id="main-nav">
+  <a href="#" class="nav-logo"><img src={asset('logo-navbar.png')} alt="La Voglia" /></a>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#storia">Storia</a></li>
+    <li><a href="#birre">Birre</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#atmosfera">Atmosfera</a></li>
+    <li><a href="#tripadvisor">Recensioni</a></li>
+    <li><a href="#contatti">Contatti</a></li>
+    <li><a href={TRIPADVISOR} target="_blank" rel="noopener" class="nav-ta">★ TripAdvisor</a></li>
+  </ul>
+  <div id="progress-bar"></div>
+</nav>
+
+<script>
+  const btn = document.getElementById('hamburger');
+  const links = document.getElementById('nav-links');
+  btn?.addEventListener('click', () => {
+    btn.classList.toggle('open');
+    links?.classList.toggle('mobile-open');
+  });
+  // Chiudi il menu mobile dopo un click su una voce.
+  links?.querySelectorAll('a').forEach((a) =>
+    a.addEventListener('click', () => {
+      btn?.classList.remove('open');
+      links.classList.remove('mobile-open');
+    }),
+  );
+</script>

@@ -1,0 +1,12 @@
+---
+import { asset } from '@/lib/asset';
+const TRIPADVISOR =
+  'https://www.tripadvisor.it/Restaurant_Review-g1175110-d3924329-Reviews-Bar_La_Voglia-Vercelli_Province_of_Vercelli_Piedmont.html';
+---
+<footer>
+  <img src={asset('logo-footer.png')} alt="La Voglia" class="footer-logo-img" />
+  <div class="footer-sub">Pub · Birreria · Bar — Via Lagrange 28, Vercelli · Est. 1989</div>
+  <a href={TRIPADVISOR} target="_blank" rel="noopener" class="footer-ta">★ Trovaci su TripAdvisor</a>
+  <div class="footer-copy">© 2026 La Voglia — Anna, Fabio &amp; Elena</div>
+</footer>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Torna su">↑</button>
