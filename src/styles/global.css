@@ -276,3 +276,26 @@ footer{background:#040908;border-top:1px solid rgba(52,224,161,.08);text-align:c
   .menu-tab{flex:1 1 50%;border-bottom:1px solid var(--gbr)}
   .acc-label{font-size:.78rem}
 }
+
+/* ── MENU pubblico su smartphone (lettura clienti) ──────── */
+@media(max-width:600px){
+  /* tab: quattro riquadri 2x2 leggibili, testo che va a capo, area tocco ampia */
+  .menu-tab{padding:.85rem .5rem;font-size:.72rem;white-space:normal;line-height:1.15;min-height:54px;letter-spacing:.06em}
+
+  /* card del menu piu' compatte, prezzo ben visibile */
+  .items-grid{grid-template-columns:1fr;gap:.7rem}
+  .item-card{padding:.9rem 1rem;gap:.8rem}
+  .item-num{font-size:.68rem}
+  .item-name{font-size:.95rem;line-height:1.35}
+  .item-sub{font-size:.72rem}
+  .item-price{font-size:1.2rem}
+
+  /* nota e titoli piu' misurati */
+  .panini-note{padding:1.1rem 1.2rem;font-size:.92rem}
+  .section-title{font-size:2.1rem}
+
+  /* ricerca panini "appiccicata" sotto la navbar mentre scorri i 100 panini */
+  .panini-search-row{position:sticky;top:72px;z-index:20;background:var(--gd);
+    padding:.7rem 0;margin-bottom:1.2rem;box-shadow:0 8px 16px -8px rgba(0,0,0,.6)}
+  .panini-search{font-size:16px} /* 16px: evita lo zoom automatico di iOS al focus */
+}

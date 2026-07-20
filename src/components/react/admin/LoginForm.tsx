@@ -3,6 +3,7 @@
    ============================================================ */
 import { useState, type FormEvent } from 'react';
 import { getBrowserSupabase } from '@/lib/supabase';
+import { asset } from '@/lib/asset';
 
 export function LoginForm() {
   const [email, setEmail] = useState('');
@@ -28,7 +29,8 @@ export function LoginForm() {
   return (
     <div className="adm-login">
       <form className="adm-login-card" onSubmit={handleSubmit}>
-        <h1 className="adm-login-title">La Voglia · Admin</h1>
+        <img className="adm-login-logo" src={asset('logo.png')} alt="La Voglia" />
+        <h1 className="adm-login-title">Admin</h1>
         <p className="adm-login-sub">Accedi per gestire menu, birre e panini.</p>
 
         <label htmlFor="email">Email</label>

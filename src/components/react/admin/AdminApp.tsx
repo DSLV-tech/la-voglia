@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import type { Session } from '@supabase/supabase-js';
 import type { EntityName } from '@/types/menu';
 import { getBrowserSupabase, isSupabaseConfigured } from '@/lib/supabase';
+import { asset } from '@/lib/asset';
 import { ErrorBoundary } from './ErrorBoundary';
 import { LoginForm } from './LoginForm';
 import { EntityManager } from './EntityManager';
@@ -84,10 +85,8 @@ export default function AdminApp() {
       <div className="adm-app">
         <aside className="adm-sidebar">
           <div className="adm-logo">
-            <span className="adm-logo-mark">🍺</span>
-            <span className="adm-logo-text">
-              La Voglia <em>Admin</em>
-            </span>
+            <img className="adm-logo-img" src={asset('logo-navbar.png')} alt="La Voglia" />
+            <span className="adm-logo-badge">Admin</span>
           </div>
 
           <nav className="adm-nav">
