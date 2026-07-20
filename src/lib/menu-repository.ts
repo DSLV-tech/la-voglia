@@ -33,9 +33,9 @@ export const fallbackMenu: MenuData = {
 
 /** Carica solo le birre alla spina (usato dall'island BirreSpina). */
 export async function loadTapBeers(): Promise<TapBeer[]> {
-  const supabase = getSupabase();
-  if (!supabase) return fallbackMenu.tapBeers;
   try {
+    const supabase = getSupabase();
+    if (!supabase) return fallbackMenu.tapBeers;
     const { data, error } = await supabase.from('tap_beers').select('*').order('sort_order');
     if (error || !data?.length) return fallbackMenu.tapBeers;
     return data;
@@ -49,10 +49,10 @@ export async function loadTapBeers(): Promise<TapBeer[]> {
  * cosi' il sito e' sempre visibile.
  */
 export async function loadMenu(): Promise<MenuData> {
-  const supabase = getSupabase();
-  if (!supabase) return fallbackMenu;
-
   try {
+    const supabase = getSupabase();
+    if (!supabase) return fallbackMenu;
+
     const [tap, pan, foc, bot, gin] = await Promise.all([
       supabase.from('tap_beers').select('*').order('sort_order'),
       supabase.from('panini').select('*').order('number'),

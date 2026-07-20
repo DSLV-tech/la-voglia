@@ -6,4 +6,6 @@
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "20"
+  # Node 22+ e' necessario: include il WebSocket nativo richiesto da
+  # @supabase/supabase-js durante la generazione statica.
+  NODE_VERSION = "22"
